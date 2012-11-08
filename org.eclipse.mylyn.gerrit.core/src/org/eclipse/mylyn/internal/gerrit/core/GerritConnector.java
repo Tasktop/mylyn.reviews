@@ -19,6 +19,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.httpclient.HttpStatus;
 import org.eclipse.core.runtime.CoreException;
@@ -69,10 +71,17 @@ public class GerritConnector extends AbstractRepositoryConnector {
 		logger.setLevel(Level.OFF);
 	}
 
+	private static final Pattern CHANGE_ID_PATTERN = Pattern.compile("/#/c/(\\d+)");
+
 	/**
-	 * Prefix for task id in a task-url: http://[gerrit-repository]/#change,[task.id].
+	 * Prefix for task id in a task-url: http://[gerrit-repository]/#change,[task.id] for Gerrit 2.1.
 	 */
-	public static final String CHANGE_PREFIX = "/#change,"; //$NON-NLS-1$
+	public static final String CHANGE_PREFIX_OLD = "/#change,"; //$NON-NLS-1$
+
+	/**
+	 * Prefix for task id in a task-url: http://[gerrit-repository]/#/c/[task.id] for Gerrit 2.2 and later.
+	 */
+	public static final String CHANGE_PREFIX_NEW = "/#/c/"; //$NON-NLS-1$
 
 	/**
 	 * Connector kind
@@ -150,10 +159,16 @@ public class GerritConnector extends AbstractRepositoryConnector {
 			return null;
 		}
 
-		int i = url.indexOf(CHANGE_PREFIX);
+		int i = url.indexOf(CHANGE_PREFIX_OLD);
 		if (i != -1) {
 			return url.substring(0, i);
 		}
+
+		i = url.indexOf(CHANGE_PREFIX_NEW);
+		if (i != -1) {
+			return url.substring(0, i);
+		}
+
 		return null;
 	}
 
@@ -164,10 +179,20 @@ public class GerritConnector extends AbstractRepositoryConnector {
 		}
 
 		// example: https://review.sonyericsson.net/#change,14175
-		int index = url.indexOf(CHANGE_PREFIX);
+		int index = url.indexOf(CHANGE_PREFIX_OLD);
 		if (index > 0) {
-			return url.substring(index + CHANGE_PREFIX.length());
+			return url.substring(index + CHANGE_PREFIX_OLD.length());
 		}
+
+		// example: https://review.sonyericsson.net/#/c/14175
+		index = url.indexOf(CHANGE_PREFIX_NEW);
+		if (index > 0) {
+			Matcher matcher = CHANGE_ID_PATTERN.matcher(url.substring(index));
+			if (matcher.find()) {
+				return matcher.group(1);
+			}
+		}
+
 		return null;
 	}
 
@@ -182,7 +207,7 @@ public class GerritConnector extends AbstractRepositoryConnector {
 
 	@Override
 	public String getTaskUrl(String repositoryUrl, String taskId) {
-		return repositoryUrl + CHANGE_PREFIX + taskId;
+		return repositoryUrl + CHANGE_PREFIX_NEW + taskId + "/"; //$NON-NLS-1$
 	}
 
 	@Override
