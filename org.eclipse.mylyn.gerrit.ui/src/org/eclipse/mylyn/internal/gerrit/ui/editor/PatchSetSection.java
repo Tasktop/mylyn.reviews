@@ -37,6 +37,7 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
+import org.eclipse.jface.text.TextSelection;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.IOpenListener;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
@@ -46,6 +47,7 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.mylyn.commons.core.StatusHandler;
 import org.eclipse.mylyn.internal.gerrit.core.GerritCorePlugin;
 import org.eclipse.mylyn.internal.gerrit.core.GerritTaskSchema;
 import org.eclipse.mylyn.internal.gerrit.core.GerritUtil;
@@ -107,6 +109,11 @@ import com.google.gerrit.reviewdb.PatchSet;
  * @author Sascha Scholz
  */
 public class PatchSetSection extends AbstractGerritSection {
+	public static interface PatchSetListener {
+		public void patchSetUpdated();
+	}
+
+	private final List<PatchSetListener> listeners = new ArrayList<PatchSetListener>();
 
 	private class CompareAction extends Action {
 
@@ -348,12 +355,16 @@ public class PatchSetSection extends AbstractGerritSection {
 			@Override
 			public void done(final IJobChangeEvent event) {
 				Display.getDefault().asyncExec(new Runnable() {
+
 					public void run() {
 						if (getControl() != null && !getControl().isDisposed()) {
 							if (event.getResult().isOK()) {
 								GerritPatchSetContent content = job.getPatchSetContent();
 								if (content != null && content.getPatchScriptByPatchKey() != null) {
-									viewer.setInput(GerritUtil.createInput(changeDetail, content, cache));
+									cache.putContent(patchSetDetail.getInfo().getKey(), content);
+									IReviewItemSet itemSet = GerritUtil.createInput(changeDetail, content, cache);
+									notifyListeners();
+									viewer.setInput(itemSet);
 								}
 							}
 
@@ -366,6 +377,20 @@ public class PatchSetSection extends AbstractGerritSection {
 		});
 		jobs.add(job);
 		job.schedule();
+	}
+
+	protected void notifyListeners() {
+		for (PatchSetListener listener : listeners) {
+			try {
+				listener.patchSetUpdated();
+			} catch (Exception e) {
+				StatusHandler.log(new Status(IStatus.ERROR, GerritUiPlugin.PLUGIN_ID, e.getMessage(), e));
+			}
+		}
+	}
+
+	public void addPatchSetListener(PatchSetListener listener) {
+		listeners.add(listener);
 	}
 
 	@Override
@@ -583,7 +608,7 @@ public class PatchSetSection extends AbstractGerritSection {
 				IStructuredSelection selection = (IStructuredSelection) event.getSelection();
 				IFileItem item = (IFileItem) selection.getFirstElement();
 				if (item != null) {
-					doOpen((IReviewItemSet) viewer.getInput(), item);
+					doOpen((IReviewItemSet) viewer.getInput(), item, null);
 				}
 			}
 		});
@@ -600,7 +625,7 @@ public class PatchSetSection extends AbstractGerritSection {
 		getTaskEditorPage().reflow();
 	}
 
-	private void doOpen(IReviewItemSet items, IFileItem item) {
+	protected void doOpen(IReviewItemSet items, IFileItem item, TextSelection selection) {
 		if (item.getBase() == null || item.getTarget() == null) {
 			getTaskEditorPage().getEditor().setMessage("The selected file is not available, yet",
 					IMessageProvider.WARNING);
@@ -609,7 +634,11 @@ public class PatchSetSection extends AbstractGerritSection {
 
 		GerritReviewBehavior behavior = new GerritReviewBehavior(getTask());
 		CompareConfiguration configuration = new CompareConfiguration();
-		CompareUI.openCompareEditor(new FileItemCompareEditorInput(configuration, item, behavior));
+		CompareUI.openCompareEditor(new FileItemCompareEditorInput(configuration, item, behavior, selection));
+	}
+
+	protected ReviewItemCache getCache() {
+		return cache;
 	}
 
 }

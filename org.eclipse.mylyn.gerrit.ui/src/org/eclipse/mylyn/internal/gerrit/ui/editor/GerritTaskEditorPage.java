@@ -69,6 +69,12 @@ public class GerritTaskEditorPage extends AbstractTaskEditorPage {
 				it.remove();
 			}
 		}
+		descriptors.add(new TaskEditorPartDescriptor(InlineCommentsSection.class.getName()) {
+			@Override
+			public AbstractTaskEditorPart createPart() {
+				return new InlineCommentsSection();
+			}
+		});
 		descriptors.add(new TaskEditorPartDescriptor(ReviewSection.class.getName()) {
 			@Override
 			public AbstractTaskEditorPart createPart() {

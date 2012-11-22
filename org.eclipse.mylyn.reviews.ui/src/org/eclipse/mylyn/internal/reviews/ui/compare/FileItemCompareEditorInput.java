@@ -16,13 +16,21 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.compare.CompareConfiguration;
 import org.eclipse.compare.CompareEditorInput;
+import org.eclipse.compare.internal.CompareEditor;
+import org.eclipse.compare.internal.CompareEditorSelectionProvider;
 import org.eclipse.compare.structuremergeviewer.ICompareInput;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.jface.text.TextSelection;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.mylyn.reviews.core.model.IFileItem;
 import org.eclipse.mylyn.reviews.ui.ReviewBehavior;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * @author Steffen Pingel
@@ -33,15 +41,23 @@ public class FileItemCompareEditorInput extends CompareEditorInput {
 
 	private final ReviewBehavior behavior;
 
-	public FileItemCompareEditorInput(CompareConfiguration configuration, IFileItem file, ReviewBehavior behavior) {
+	private final TextSelection selection;
+
+	public FileItemCompareEditorInput(CompareConfiguration configuration, IFileItem file, ReviewBehavior behavior,
+			TextSelection selection) {
 		super(configuration);
 		this.file = file;
 		this.behavior = behavior;
+		this.selection = selection;
 
 		configuration.setLeftLabel(NLS.bind("{0}: {1}", file.getTarget().getRevision(), file.getName()));
 		configuration.setRightLabel(NLS.bind("{0}: {1}", file.getBase().getRevision(), file.getName()));
 		setTitle(NLS.bind("Compare {0} {1} and {2}", new Object[] { file.getName(), file.getTarget().getRevision(),
 				file.getBase().getRevision() }));
+	}
+
+	public FileItemCompareEditorInput(CompareConfiguration configuration, IFileItem item, ReviewBehavior behavior) {
+		this(configuration, item, behavior, null);
 	}
 
 	@Override
@@ -66,7 +82,15 @@ public class FileItemCompareEditorInput extends CompareEditorInput {
 	@Override
 	protected void contentsCreated() {
 		super.contentsCreated();
-		//getAnnotationModelToAttach().focusOnComment();
+		if (selection != null) {
+			PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+				public void run() {
+					((CompareEditorSelectionProvider) ((CompareEditor) getWorkbenchPart()).getEditorSite()
+							.getSelectionProvider()).setSelection(selection, true);
+				}
+			});
+			//getAnnotationModelToAttach().focusOnComment();
+		}
 	}
 
 }

@@ -14,7 +14,11 @@ package org.eclipse.mylyn.internal.gerrit.core;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.mylyn.internal.gerrit.core.client.GerritPatchSetContent;
 import org.eclipse.mylyn.reviews.core.model.IReviewItem;
+
+import com.google.gerrit.reviewdb.PatchSet;
+import com.google.gerrit.reviewdb.PatchSet.Id;
 
 /**
  * @author Steffen Pingel
@@ -22,6 +26,8 @@ import org.eclipse.mylyn.reviews.core.model.IReviewItem;
 public class ReviewItemCache {
 
 	private final Map<String, IReviewItem> reviewItemById;
+
+	private final Map<Id, GerritPatchSetContent> contentById = new HashMap<PatchSet.Id, GerritPatchSetContent>();
 
 	public ReviewItemCache() {
 		reviewItemById = new HashMap<String, IReviewItem>();
@@ -33,6 +39,14 @@ public class ReviewItemCache {
 
 	public void put(IReviewItem item) {
 		reviewItemById.put(item.getId(), item);
+	}
+
+	public void putContent(Id key, GerritPatchSetContent content) {
+		contentById.put(key, content);
+	}
+
+	public GerritPatchSetContent getContent(Id key) {
+		return contentById.get(key);
 	}
 
 }

@@ -33,6 +33,8 @@ public class GerritImages {
 
 	public static final ImageDescriptor GIT_REPOSITORY = create("repository_rep.gif"); //$NON-NLS-1$
 
+	public static final ImageDescriptor GLASSES = create("jwatch_obj.gif"); //$NON-NLS-1$
+
 	private static ImageDescriptor create(String path) {
 		try {
 			return ImageDescriptor.createFromURL(makeIconFileURL(path));
