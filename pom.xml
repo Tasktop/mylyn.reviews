@@ -82,6 +82,10 @@
 	</profile>
   </profiles>
   <modules>
+	<module>org.eclipse.mylyn.tasks.emf.connector</module>
+	<module>org.eclipse.mylyn.tasks.emf.connector.tests</module>
+	<module>org.eclipse.mylyn.tasks.emf.connector.ui</module>
+	<module>org.eclipse.mylyn.tasks.emf.connector.feature</module>
 	<module>org.eclipse.mylyn.gerrit.core</module>
 	<module>org.eclipse.mylyn.gerrit.core.tests</module>
 	<module>org.eclipse.mylyn.gerrit.feature</module>
