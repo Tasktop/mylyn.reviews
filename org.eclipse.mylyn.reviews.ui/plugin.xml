@@ -49,6 +49,54 @@
 			verticalRulerPreferenceKey="comment_verticalRuler" 
 			verticalRulerPreferenceValue="true" />
 	</extension>
+ <extension
+       point="org.eclipse.ui.views">
+    <view
+          class="org.eclipse.ui.navigator.CommonNavigator"
+          id="org.eclipse.mylyn.internal.reviews.navigator"
+          name="ReviewExplorer">
+    </view>
+ </extension>
+ <extension
+       point="org.eclipse.ui.navigator.viewer">
+    <viewerActionBinding
+          viewerId="org.eclipse.mylyn.internal.reviews.navigator">
+       <includes>
+          <actionExtension
+                pattern="org.eclipse.ui.navigator.resources.*">
+          </actionExtension>
+       </includes>
+    </viewerActionBinding>
+    <viewerContentBinding
+          viewerId="org.eclipse.mylyn.internal.reviews.navigator">
+       <includes>
+          <contentExtension
+                pattern="org.eclipse.ui.navigator.resourceContent">
+          </contentExtension>
+          <contentExtension
+                pattern="org.eclipse.ui.navigator.resources.filters.*">
+          </contentExtension>
+          <contentExtension
+                pattern="org.eclipse.ui.navigator.resources.linkHelper">
+          </contentExtension>
+          <contentExtension
+                pattern="org.eclipse.ui.navigator.resources.workingSets">
+          </contentExtension>
+       </includes>
+    </viewerContentBinding>
+ </extension>
+ <extension
+       point="org.eclipse.ui.perspectiveExtensions">
+    <perspectiveExtension
+          targetID="org.eclipse.ui.resourcePerspective">
+       <view
+             id="org.eclipse.mylyn.internal.reviews.navigator"
+             ratio="0.5"
+             relationship="stack"
+             relative="org.eclipse.ui.navigator.ProjectExplorer">
+       </view>
+    </perspectiveExtension>
+ </extension>
 
 	<!--
 	<extension point="org.eclipse.ui.workbench.texteditor.rulerColumns">

@@ -2356,7 +2356,7 @@ public class ReviewsPackage extends EPackageImpl {
 		initEAttribute(
 				getReviewComponent_Enabled(),
 				ecorePackage.getEBoolean(),
-				"enabled", "true", 0, 1, IReviewComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+				"enabled", "true", 0, 1, IReviewComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 
 		initEClass(fileItemEClass, IFileItem.class,
 				"FileItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
