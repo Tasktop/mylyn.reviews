@@ -39,6 +39,7 @@ import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.mylyn.commons.core.StatusHandler;
 import org.eclipse.mylyn.internal.reviews.ui.ReviewsUiPlugin;
 import org.eclipse.mylyn.internal.reviews.ui.actions.AddLineCommentToFileAction;
+import org.eclipse.mylyn.internal.reviews.ui.actions.ReplyToCommentAction;
 import org.eclipse.mylyn.internal.reviews.ui.annotations.CommentAnnotation;
 import org.eclipse.mylyn.internal.reviews.ui.annotations.CommentAnnotationHover;
 import org.eclipse.mylyn.internal.reviews.ui.annotations.CommentInformationControlCreator;
@@ -197,6 +198,8 @@ class ReviewCompareInputListener implements ITextInputListener, IReviewCompareSo
 
 	private AddLineCommentToFileAction addLineCommentAction;
 
+	private ReplyToCommentAction replyCommentAction;
+
 	private final ReviewAnnotationModel annotationModel;
 
 	private String initialText;
@@ -332,15 +335,14 @@ class ReviewCompareInputListener implements ITextInputListener, IReviewCompareSo
 
 	public void registerContextMenu() {
 		addLineCommentAction = new AddLineCommentToFileAction(this);
-//				addLineCommentAction.setImageDescriptor(CrucibleImages.ADD_COMMENT);
-//				addGeneralCommentAction = new AddGeneralCommentToFileAction(crucibleAnnotationModel.getCrucibleFile());
+		replyCommentAction = new ReplyToCommentAction(this);
 
 		if (sourceViewer != null) {
 			sourceViewer.addSelectionChangedListener(addLineCommentAction);
-//					sourceViewer.addSelectionChangedListener(addGeneralCommentAction);
+			sourceViewer.addSelectionChangedListener(replyCommentAction);
 		}
 		mergeSourceViewer.addTextAction(addLineCommentAction);
-//				mergeSourceViewer.addTextAction(addGeneralCommentAction);
+		mergeSourceViewer.addTextAction(replyCommentAction);
 	}
 
 	private void createHighlighting(Class<SourceViewer> sourceViewerClazz) throws IllegalArgumentException,
@@ -442,5 +444,4 @@ class ReviewCompareInputListener implements ITextInputListener, IReviewCompareSo
 			ruler.addDecorator(0, annotationColumn);
 		}
 	}
-
 }

@@ -28,6 +28,7 @@ import org.eclipse.jface.text.DocumentEvent;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IDocumentListener;
 import org.eclipse.jface.text.Position;
+import org.eclipse.jface.text.TextSelection;
 import org.eclipse.jface.text.source.Annotation;
 import org.eclipse.jface.text.source.AnnotationModelEvent;
 import org.eclipse.jface.text.source.IAnnotationModel;
@@ -143,6 +144,22 @@ public class ReviewAnnotationModel implements IAnnotationModel {
 		for (CommentAnnotation annotation : this.annotations) {
 			if (annotation.getPosition().offset <= offset
 					&& (annotation.getPosition().length + annotation.getPosition().offset) >= offset) {
+				result.add(annotation);
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * Returns the first annotation that this knows about for the given offset in the document
+	 */
+	public List<CommentAnnotation> getAnnotationsWithin(IDocument document, TextSelection selection) {
+
+		selection.getStartLine();
+		List<CommentAnnotation> result = new ArrayList<CommentAnnotation>();
+		int endRange = offset + length;
+		for (CommentAnnotation annotation : this.annotations) {
+			if (annotation.getPosition().offset >= offset && annotation.getPosition().offset <= endRange) {
 				result.add(annotation);
 			}
 		}
