@@ -15,9 +15,14 @@ import java.util.Set;
 
 import org.eclipse.mylyn.internal.gerrit.core.GerritConnector;
 import org.eclipse.mylyn.internal.gerrit.core.GerritTaskSchema;
+import org.eclipse.mylyn.internal.gerrit.core.GerritUtil;
+import org.eclipse.mylyn.internal.gerrit.core.client.GerritChange;
+import org.eclipse.mylyn.internal.gerrit.core.client.compat.ChangeDetailX;
+import org.eclipse.mylyn.internal.reviews.ui.editor.AbstractReviewTaskEditorPage;
+import org.eclipse.mylyn.reviews.core.model.IReview;
 import org.eclipse.mylyn.tasks.core.data.TaskAttribute;
+import org.eclipse.mylyn.tasks.core.data.TaskData;
 import org.eclipse.mylyn.tasks.ui.editors.AbstractAttributeEditor;
-import org.eclipse.mylyn.tasks.ui.editors.AbstractTaskEditorPage;
 import org.eclipse.mylyn.tasks.ui.editors.AbstractTaskEditorPart;
 import org.eclipse.mylyn.tasks.ui.editors.AttributeEditorFactory;
 import org.eclipse.mylyn.tasks.ui.editors.LayoutHint;
@@ -25,12 +30,16 @@ import org.eclipse.mylyn.tasks.ui.editors.LayoutHint.ColumnSpan;
 import org.eclipse.mylyn.tasks.ui.editors.LayoutHint.RowSpan;
 import org.eclipse.mylyn.tasks.ui.editors.TaskEditor;
 import org.eclipse.mylyn.tasks.ui.editors.TaskEditorPartDescriptor;
+import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorSite;
 
 /**
  * @author Mikael Kober
  * @author Thomas Westling
  */
-public class GerritTaskEditorPage extends AbstractTaskEditorPage {
+public class GerritTaskEditorPage extends AbstractReviewTaskEditorPage {
+
+	IReview review;
 
 	public GerritTaskEditorPage(TaskEditor editor) {
 		super(editor, GerritConnector.CONNECTOR_KIND);
@@ -84,4 +93,19 @@ public class GerritTaskEditorPage extends AbstractTaskEditorPage {
 		return descriptors;
 	}
 
+	@Override
+	public void init(IEditorSite site, IEditorInput input) {
+		super.init(site, input);
+		TaskData taskData = getModel().getTaskData();
+		if (taskData != null) {
+			GerritChange change = GerritUtil.getChange(taskData);
+			final ChangeDetailX detail = change.getChangeDetail();
+			review = GerritUtil.toReview(detail);
+		}
+	}
+
+	@Override
+	public IReview getReview() {
+		return review;
+	}
 }
