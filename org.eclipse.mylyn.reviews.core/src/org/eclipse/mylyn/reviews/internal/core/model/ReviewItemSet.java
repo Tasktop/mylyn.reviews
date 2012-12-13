@@ -148,9 +148,10 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 	public void setCreationDate(Date newCreationDate) {
 		Date oldCreationDate = creationDate;
 		creationDate = newCreationDate;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ReviewsPackage.REVIEW_ITEM_SET__CREATION_DATE,
 					oldCreationDate, creationDate));
+		}
 	}
 
 	/**
@@ -170,9 +171,10 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 	public void setModificationDate(Date newModificationDate) {
 		Date oldModificationDate = modificationDate;
 		modificationDate = newModificationDate;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ReviewsPackage.REVIEW_ITEM_SET__MODIFICATION_DATE,
 					oldModificationDate, modificationDate));
+		}
 	}
 
 	/**
@@ -208,7 +210,6 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 	@Override
 	public List<IComment> getAllComments() {
 		BasicEList<IComment> all = new BasicEList<IComment>(getTopics());
-		all.addAll(getTopics());
 		for (IReviewItem item : getItems()) {
 			all.addAll(item.getAllComments());
 		}
@@ -232,9 +233,10 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 	public void setRevision(String newRevision) {
 		String oldRevision = revision;
 		revision = newRevision;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ReviewsPackage.REVIEW_ITEM_SET__REVISION,
 					oldRevision, revision));
+		}
 	}
 
 	/**
@@ -376,8 +378,9 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (creationDate: "); //$NON-NLS-1$
