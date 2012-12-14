@@ -10,33 +10,26 @@
  */
 package org.eclipse.mylyn.reviews.internal.core.model;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.mylyn.reviews.core.model.ILocation;
-import org.eclipse.mylyn.reviews.core.model.IReviewItem;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Location</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Location#getIndex <em>Index</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Location#getIndex <em>Index</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class Location extends EObjectImpl implements ILocation {
 	/**
-	 * The default value of the '{@link #getIndex() <em>Index</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getIndex() <em>Index</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getIndex()
 	 * @generated
 	 * @ordered
@@ -45,7 +38,6 @@ public abstract class Location extends EObjectImpl implements ILocation {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected Location() {
@@ -54,7 +46,6 @@ public abstract class Location extends EObjectImpl implements ILocation {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -73,7 +64,6 @@ public abstract class Location extends EObjectImpl implements ILocation {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -87,7 +77,6 @@ public abstract class Location extends EObjectImpl implements ILocation {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

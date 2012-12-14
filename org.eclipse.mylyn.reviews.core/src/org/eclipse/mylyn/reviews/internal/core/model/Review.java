@@ -36,23 +36,23 @@ import org.eclipse.mylyn.reviews.core.model.IUser;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Review#getCreationDate <em>Creation Date</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Review#getModificationDate <em>Modification Date</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Review#getItems <em>Items</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Review#getReviewTask <em>Review Task</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Review#getState <em>State</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Review#getId <em>Id</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Review#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Review#getCreationDate <em>Creation Date</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Review#getModificationDate <em>Modification Date</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Review#getItems <em>Items</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Review#getReviewTask <em>Review Task</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Review#getState <em>State</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Review#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Review#getOwner <em>Owner</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class Review extends TopicContainer implements IReview {
 	/**
-	 * The default value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute. <!-- begin-user-doc -->
+	 * The default value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getCreationDate()
 	 * @generated
 	 * @ordered
@@ -60,9 +60,9 @@ public class Review extends TopicContainer implements IReview {
 	protected static final Date CREATION_DATE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute. <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getCreationDate()
 	 * @generated
 	 * @ordered
@@ -90,9 +90,9 @@ public class Review extends TopicContainer implements IReview {
 	protected Date modificationDate = MODIFICATION_DATE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getItems() <em>Items</em>}' reference list. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getItems() <em>Items</em>}' reference list.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getItems()
 	 * @generated
 	 * @ordered
@@ -110,9 +110,9 @@ public class Review extends TopicContainer implements IReview {
 	protected ITaskReference reviewTask;
 
 	/**
-	 * The cached value of the '{@link #getState() <em>State</em>}' containment reference. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getState() <em>State</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getState()
 	 * @generated
 	 * @ordered
@@ -120,8 +120,8 @@ public class Review extends TopicContainer implements IReview {
 	protected IReviewState state;
 
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -129,8 +129,8 @@ public class Review extends TopicContainer implements IReview {
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -149,7 +149,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected Review() {
@@ -158,7 +157,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -168,7 +166,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Date getCreationDate() {
@@ -177,7 +174,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setCreationDate(Date newCreationDate) {
@@ -190,7 +186,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Date getModificationDate() {
@@ -199,7 +194,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setModificationDate(Date newModificationDate) {
@@ -241,7 +235,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public List<IReviewItem> getItems() {
@@ -253,7 +246,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ITaskReference getReviewTask() {
@@ -280,7 +272,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ITaskReference basicGetReviewTask() {
@@ -289,7 +280,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetReviewTask(ITaskReference newReviewTask, NotificationChain msgs) {
@@ -308,7 +298,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setReviewTask(ITaskReference newReviewTask) {
@@ -330,7 +319,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IReviewState getState() {
@@ -356,7 +344,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IReviewState basicGetState() {
@@ -365,7 +352,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetState(IReviewState newState, NotificationChain msgs) {
@@ -384,7 +370,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setState(IReviewState newState) {
@@ -405,7 +390,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getId() {
@@ -414,7 +398,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -426,7 +409,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IUser getOwner() {
@@ -444,7 +426,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IUser basicGetOwner() {
@@ -453,7 +434,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setOwner(IUser newOwner) {
@@ -465,7 +445,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -481,7 +460,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -513,7 +491,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -548,7 +525,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -581,7 +557,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -609,7 +584,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -629,7 +603,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -649,7 +622,6 @@ public class Review extends TopicContainer implements IReview {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

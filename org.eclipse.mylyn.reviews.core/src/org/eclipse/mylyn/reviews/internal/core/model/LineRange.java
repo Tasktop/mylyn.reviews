@@ -11,12 +11,9 @@
 package org.eclipse.mylyn.reviews.internal.core.model;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.mylyn.reviews.core.model.ILineRange;
 
 /**
@@ -24,18 +21,18 @@ import org.eclipse.mylyn.reviews.core.model.ILineRange;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.LineRange#getStart <em>Start</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.LineRange#getEnd <em>End</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.LineRange#getStart <em>Start</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.LineRange#getEnd <em>End</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class LineRange extends EObjectImpl implements ILineRange {
 	/**
-	 * The default value of the '{@link #getStart() <em>Start</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getStart() <em>Start</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getStart()
 	 * @generated
 	 * @ordered
@@ -63,8 +60,8 @@ public class LineRange extends EObjectImpl implements ILineRange {
 	protected static final int END_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getEnd() <em>End</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getEnd() <em>End</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getEnd()
 	 * @generated
 	 * @ordered
@@ -73,7 +70,6 @@ public class LineRange extends EObjectImpl implements ILineRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected LineRange() {
@@ -82,7 +78,6 @@ public class LineRange extends EObjectImpl implements ILineRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -92,7 +87,6 @@ public class LineRange extends EObjectImpl implements ILineRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public int getStart() {
@@ -101,7 +95,6 @@ public class LineRange extends EObjectImpl implements ILineRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setStart(int newStart) {
@@ -113,7 +106,6 @@ public class LineRange extends EObjectImpl implements ILineRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public int getEnd() {
@@ -122,7 +114,6 @@ public class LineRange extends EObjectImpl implements ILineRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setEnd(int newEnd) {
@@ -134,7 +125,6 @@ public class LineRange extends EObjectImpl implements ILineRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -150,7 +140,6 @@ public class LineRange extends EObjectImpl implements ILineRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -168,7 +157,6 @@ public class LineRange extends EObjectImpl implements ILineRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -186,7 +174,6 @@ public class LineRange extends EObjectImpl implements ILineRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -202,7 +189,6 @@ public class LineRange extends EObjectImpl implements ILineRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

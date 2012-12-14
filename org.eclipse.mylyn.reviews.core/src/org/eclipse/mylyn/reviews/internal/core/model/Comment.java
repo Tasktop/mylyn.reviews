@@ -13,19 +13,19 @@ package org.eclipse.mylyn.reviews.internal.core.model;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.mylyn.reviews.core.model.IComment;
 import org.eclipse.mylyn.reviews.core.model.ICommentType;
+import org.eclipse.mylyn.reviews.core.model.ICommented;
 import org.eclipse.mylyn.reviews.core.model.IDated;
 import org.eclipse.mylyn.reviews.core.model.IIndexed;
 import org.eclipse.mylyn.reviews.core.model.ITopic;
@@ -36,26 +36,48 @@ import org.eclipse.mylyn.reviews.core.model.IUser;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#getIndex <em>Index</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#getCreationDate <em>Creation Date</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#getModificationDate <em>Modification Date</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#getAuthor <em>Author</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#getType <em>Type</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#getDescription <em>Description</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#getId <em>Id</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#getReplies <em>Replies</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#isDraft <em>Draft</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#getParentTopic <em>Parent Topic</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#isEnabled <em>Enabled</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#getAllComments <em>All Comments</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#getIndex <em>Index</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#getCreationDate <em>Creation Date</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#getModificationDate <em>Modification Date</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#getAuthor <em>Author</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#getReplies <em>Replies</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#isDraft <em>Draft</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Comment#getParentTopic <em>Parent Topic</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
-public class Comment extends ReviewComponent implements IComment {
+public class Comment extends EObjectImpl implements IComment {
 	/**
-	 * The default value of the '{@link #getIndex() <em>Index</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #isEnabled() <em>Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ENABLED_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isEnabled() <em>Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean enabled = ENABLED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getIndex() <em>Index</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getIndex()
 	 * @generated
 	 * @ordered
@@ -63,9 +85,9 @@ public class Comment extends ReviewComponent implements IComment {
 	protected static final long INDEX_EDEFAULT = 0L;
 
 	/**
-	 * The default value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute. <!-- begin-user-doc -->
+	 * The default value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getCreationDate()
 	 * @generated
 	 * @ordered
@@ -73,9 +95,9 @@ public class Comment extends ReviewComponent implements IComment {
 	protected static final Date CREATION_DATE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute. <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getCreationDate()
 	 * @generated
 	 * @ordered
@@ -103,9 +125,9 @@ public class Comment extends ReviewComponent implements IComment {
 	protected Date modificationDate = MODIFICATION_DATE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getAuthor() <em>Author</em>}' reference. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getAuthor() <em>Author</em>}' reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getAuthor()
 	 * @generated
 	 * @ordered
@@ -113,9 +135,9 @@ public class Comment extends ReviewComponent implements IComment {
 	protected IUser author;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -123,9 +145,9 @@ public class Comment extends ReviewComponent implements IComment {
 	protected ICommentType type;
 
 	/**
-	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getDescription()
 	 * @generated
 	 * @ordered
@@ -133,9 +155,9 @@ public class Comment extends ReviewComponent implements IComment {
 	protected static final String DESCRIPTION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getDescription()
 	 * @generated
 	 * @ordered
@@ -143,8 +165,8 @@ public class Comment extends ReviewComponent implements IComment {
 	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -152,8 +174,8 @@ public class Comment extends ReviewComponent implements IComment {
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -161,9 +183,9 @@ public class Comment extends ReviewComponent implements IComment {
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getReplies() <em>Replies</em>}' containment reference list. <!-- begin-user-doc
+	 * The cached value of the '{@link #getReplies() <em>Replies</em>}' containment reference list.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getReplies()
 	 * @generated
 	 * @ordered
@@ -191,9 +213,9 @@ public class Comment extends ReviewComponent implements IComment {
 	protected boolean draft = DRAFT_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getParentTopic() <em>Parent Topic</em>}' reference. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getParentTopic() <em>Parent Topic</em>}' reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getParentTopic()
 	 * @generated
 	 * @ordered
@@ -202,7 +224,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected Comment() {
@@ -211,12 +232,45 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
 		return ReviewsPackage.Literals.COMMENT;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEnabled(boolean newEnabled) {
+		boolean oldEnabled = enabled;
+		enabled = newEnabled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ReviewsPackage.COMMENT__ENABLED, oldEnabled, enabled));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List<IComment> getAllComments() {
+		// TODO: implement this method to return the 'All Comments' reference list
+		// Ensure that you remove @generated or mark it @generated NOT
+		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
+		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -233,7 +287,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IUser getAuthor() {
@@ -242,7 +295,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setAuthor(IUser newAuthor) {
@@ -254,7 +306,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ICommentType getType() {
@@ -280,7 +331,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ICommentType basicGetType() {
@@ -289,7 +339,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetType(ICommentType newType, NotificationChain msgs) {
@@ -308,7 +357,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setType(ICommentType newType) {
@@ -329,7 +377,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getDescription() {
@@ -338,7 +385,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setDescription(String newDescription) {
@@ -351,7 +397,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Date getCreationDate() {
@@ -360,7 +405,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setCreationDate(Date newCreationDate) {
@@ -373,7 +417,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Date getModificationDate() {
@@ -382,7 +425,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setModificationDate(Date newModificationDate) {
@@ -395,7 +437,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getId() {
@@ -404,7 +445,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -416,7 +456,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public List<IComment> getReplies() {
@@ -429,7 +468,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isDraft() {
@@ -438,7 +476,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setDraft(boolean newDraft) {
@@ -450,7 +487,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ITopic getParentTopic() {
@@ -468,7 +504,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ITopic basicGetParentTopic() {
@@ -477,7 +512,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetParentTopic(ITopic newParentTopic, NotificationChain msgs) {
@@ -496,7 +530,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setParentTopic(ITopic newParentTopic) {
@@ -518,7 +551,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -535,7 +567,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -553,12 +584,15 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+		case ReviewsPackage.COMMENT__ENABLED:
+			return isEnabled();
+		case ReviewsPackage.COMMENT__ALL_COMMENTS:
+			return getAllComments();
 		case ReviewsPackage.COMMENT__INDEX:
 			return getIndex();
 		case ReviewsPackage.COMMENT__CREATION_DATE:
@@ -589,13 +623,15 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+		case ReviewsPackage.COMMENT__ENABLED:
+			setEnabled((Boolean) newValue);
+			return;
 		case ReviewsPackage.COMMENT__CREATION_DATE:
 			setCreationDate((Date) newValue);
 			return;
@@ -630,12 +666,14 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+		case ReviewsPackage.COMMENT__ENABLED:
+			setEnabled(ENABLED_EDEFAULT);
+			return;
 		case ReviewsPackage.COMMENT__CREATION_DATE:
 			setCreationDate(CREATION_DATE_EDEFAULT);
 			return;
@@ -669,12 +707,15 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case ReviewsPackage.COMMENT__ENABLED:
+			return enabled != ENABLED_EDEFAULT;
+		case ReviewsPackage.COMMENT__ALL_COMMENTS:
+			return !getAllComments().isEmpty();
 		case ReviewsPackage.COMMENT__INDEX:
 			return getIndex() != INDEX_EDEFAULT;
 		case ReviewsPackage.COMMENT__CREATION_DATE:
@@ -703,11 +744,18 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == ICommented.class) {
+			switch (derivedFeatureID) {
+			case ReviewsPackage.COMMENT__ALL_COMMENTS:
+				return ReviewsPackage.COMMENTED__ALL_COMMENTS;
+			default:
+				return -1;
+			}
+		}
 		if (baseClass == IIndexed.class) {
 			switch (derivedFeatureID) {
 			case ReviewsPackage.COMMENT__INDEX:
@@ -731,11 +779,18 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == ICommented.class) {
+			switch (baseFeatureID) {
+			case ReviewsPackage.COMMENTED__ALL_COMMENTS:
+				return ReviewsPackage.COMMENT__ALL_COMMENTS;
+			default:
+				return -1;
+			}
+		}
 		if (baseClass == IIndexed.class) {
 			switch (baseFeatureID) {
 			case ReviewsPackage.INDEXED__INDEX:
@@ -759,7 +814,6 @@ public class Comment extends ReviewComponent implements IComment {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -768,7 +822,9 @@ public class Comment extends ReviewComponent implements IComment {
 			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (creationDate: "); //$NON-NLS-1$
+		result.append(" (enabled: "); //$NON-NLS-1$
+		result.append(enabled);
+		result.append(", creationDate: "); //$NON-NLS-1$
 		result.append(creationDate);
 		result.append(", modificationDate: "); //$NON-NLS-1$
 		result.append(modificationDate);

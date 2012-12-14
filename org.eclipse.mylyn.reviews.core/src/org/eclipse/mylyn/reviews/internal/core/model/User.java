@@ -11,12 +11,9 @@
 package org.eclipse.mylyn.reviews.internal.core.model;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.mylyn.reviews.core.model.IUser;
 
 /**
@@ -24,18 +21,18 @@ import org.eclipse.mylyn.reviews.core.model.IUser;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.User#getId <em>Id</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.User#getEmail <em>Email</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.User#getDisplayName <em>Display Name</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.User#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.User#getEmail <em>Email</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.User#getDisplayName <em>Display Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class User extends EObjectImpl implements IUser {
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -43,8 +40,8 @@ public class User extends EObjectImpl implements IUser {
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -52,9 +49,9 @@ public class User extends EObjectImpl implements IUser {
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getEmail() <em>Email</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getEmail() <em>Email</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getEmail()
 	 * @generated
 	 * @ordered
@@ -72,9 +69,9 @@ public class User extends EObjectImpl implements IUser {
 	protected String email = EMAIL_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getDisplayName() <em>Display Name</em>}' attribute. <!-- begin-user-doc -->
+	 * The default value of the '{@link #getDisplayName() <em>Display Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getDisplayName()
 	 * @generated
 	 * @ordered
@@ -82,9 +79,9 @@ public class User extends EObjectImpl implements IUser {
 	protected static final String DISPLAY_NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getDisplayName() <em>Display Name</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getDisplayName() <em>Display Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getDisplayName()
 	 * @generated
 	 * @ordered
@@ -93,7 +90,6 @@ public class User extends EObjectImpl implements IUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected User() {
@@ -102,7 +98,6 @@ public class User extends EObjectImpl implements IUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -112,7 +107,6 @@ public class User extends EObjectImpl implements IUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getId() {
@@ -121,7 +115,6 @@ public class User extends EObjectImpl implements IUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -133,7 +126,6 @@ public class User extends EObjectImpl implements IUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getEmail() {
@@ -142,7 +134,6 @@ public class User extends EObjectImpl implements IUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setEmail(String newEmail) {
@@ -154,7 +145,6 @@ public class User extends EObjectImpl implements IUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getDisplayName() {
@@ -163,7 +153,6 @@ public class User extends EObjectImpl implements IUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setDisplayName(String newDisplayName) {
@@ -176,7 +165,6 @@ public class User extends EObjectImpl implements IUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -194,7 +182,6 @@ public class User extends EObjectImpl implements IUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -215,7 +202,6 @@ public class User extends EObjectImpl implements IUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -236,7 +222,6 @@ public class User extends EObjectImpl implements IUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -254,7 +239,6 @@ public class User extends EObjectImpl implements IUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

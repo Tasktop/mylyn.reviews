@@ -11,11 +11,9 @@
 package org.eclipse.mylyn.reviews.internal.core.model;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.mylyn.reviews.core.model.ITaskReference;
 
 /**
@@ -23,18 +21,39 @@ import org.eclipse.mylyn.reviews.core.model.ITaskReference;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.TaskReference#getTaskId <em>Task Id</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.TaskReference#getRepositoryURL <em>Repository URL</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.TaskReference#isEnabled <em>Enabled</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.TaskReference#getTaskId <em>Task Id</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.TaskReference#getRepositoryURL <em>Repository URL</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
-public class TaskReference extends ReviewComponent implements ITaskReference {
+public class TaskReference extends EObjectImpl implements ITaskReference {
 	/**
-	 * The default value of the '{@link #getTaskId() <em>Task Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #isEnabled() <em>Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ENABLED_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isEnabled() <em>Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean enabled = ENABLED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTaskId() <em>Task Id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getTaskId()
 	 * @generated
 	 * @ordered
@@ -42,9 +61,9 @@ public class TaskReference extends ReviewComponent implements ITaskReference {
 	protected static final String TASK_ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTaskId() <em>Task Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getTaskId() <em>Task Id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getTaskId()
 	 * @generated
 	 * @ordered
@@ -52,9 +71,9 @@ public class TaskReference extends ReviewComponent implements ITaskReference {
 	protected String taskId = TASK_ID_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getRepositoryURL() <em>Repository URL</em>}' attribute. <!-- begin-user-doc -->
+	 * The default value of the '{@link #getRepositoryURL() <em>Repository URL</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getRepositoryURL()
 	 * @generated
 	 * @ordered
@@ -62,9 +81,9 @@ public class TaskReference extends ReviewComponent implements ITaskReference {
 	protected static final String REPOSITORY_URL_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getRepositoryURL() <em>Repository URL</em>}' attribute. <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getRepositoryURL() <em>Repository URL</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getRepositoryURL()
 	 * @generated
 	 * @ordered
@@ -73,7 +92,6 @@ public class TaskReference extends ReviewComponent implements ITaskReference {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected TaskReference() {
@@ -82,7 +100,6 @@ public class TaskReference extends ReviewComponent implements ITaskReference {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -91,8 +108,29 @@ public class TaskReference extends ReviewComponent implements ITaskReference {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEnabled(boolean newEnabled) {
+		boolean oldEnabled = enabled;
+		enabled = newEnabled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ReviewsPackage.TASK_REFERENCE__ENABLED, oldEnabled,
+					enabled));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getTaskId() {
@@ -101,7 +139,6 @@ public class TaskReference extends ReviewComponent implements ITaskReference {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setTaskId(String newTaskId) {
@@ -114,7 +151,6 @@ public class TaskReference extends ReviewComponent implements ITaskReference {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getRepositoryURL() {
@@ -123,7 +159,6 @@ public class TaskReference extends ReviewComponent implements ITaskReference {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setRepositoryURL(String newRepositoryURL) {
@@ -136,12 +171,13 @@ public class TaskReference extends ReviewComponent implements ITaskReference {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+		case ReviewsPackage.TASK_REFERENCE__ENABLED:
+			return isEnabled();
 		case ReviewsPackage.TASK_REFERENCE__TASK_ID:
 			return getTaskId();
 		case ReviewsPackage.TASK_REFERENCE__REPOSITORY_URL:
@@ -152,12 +188,14 @@ public class TaskReference extends ReviewComponent implements ITaskReference {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+		case ReviewsPackage.TASK_REFERENCE__ENABLED:
+			setEnabled((Boolean) newValue);
+			return;
 		case ReviewsPackage.TASK_REFERENCE__TASK_ID:
 			setTaskId((String) newValue);
 			return;
@@ -170,12 +208,14 @@ public class TaskReference extends ReviewComponent implements ITaskReference {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+		case ReviewsPackage.TASK_REFERENCE__ENABLED:
+			setEnabled(ENABLED_EDEFAULT);
+			return;
 		case ReviewsPackage.TASK_REFERENCE__TASK_ID:
 			setTaskId(TASK_ID_EDEFAULT);
 			return;
@@ -188,12 +228,13 @@ public class TaskReference extends ReviewComponent implements ITaskReference {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case ReviewsPackage.TASK_REFERENCE__ENABLED:
+			return enabled != ENABLED_EDEFAULT;
 		case ReviewsPackage.TASK_REFERENCE__TASK_ID:
 			return TASK_ID_EDEFAULT == null ? taskId != null : !TASK_ID_EDEFAULT.equals(taskId);
 		case ReviewsPackage.TASK_REFERENCE__REPOSITORY_URL:
@@ -206,7 +247,6 @@ public class TaskReference extends ReviewComponent implements ITaskReference {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -215,7 +255,9 @@ public class TaskReference extends ReviewComponent implements ITaskReference {
 			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (taskId: "); //$NON-NLS-1$
+		result.append(" (enabled: "); //$NON-NLS-1$
+		result.append(enabled);
+		result.append(", taskId: "); //$NON-NLS-1$
 		result.append(taskId);
 		result.append(", repositoryURL: "); //$NON-NLS-1$
 		result.append(repositoryURL);

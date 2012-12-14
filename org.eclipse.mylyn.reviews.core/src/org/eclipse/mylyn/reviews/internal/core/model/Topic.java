@@ -15,24 +15,16 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.mylyn.reviews.core.model.IComment;
 import org.eclipse.mylyn.reviews.core.model.ILocation;
 import org.eclipse.mylyn.reviews.core.model.IReview;
-import org.eclipse.mylyn.reviews.core.model.IReviewItem;
 import org.eclipse.mylyn.reviews.core.model.ITaskReference;
 import org.eclipse.mylyn.reviews.core.model.ITopic;
 import org.eclipse.mylyn.reviews.core.model.ITopicContainer;
@@ -42,22 +34,22 @@ import org.eclipse.mylyn.reviews.core.model.ITopicContainer;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Topic#getTask <em>Task</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Topic#getLocations <em>Locations</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Topic#getComments <em>Comments</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Topic#getReview <em>Review</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Topic#getTitle <em>Title</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Topic#getItem <em>Item</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Topic#getTask <em>Task</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Topic#getLocations <em>Locations</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Topic#getComments <em>Comments</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Topic#getReview <em>Review</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Topic#getTitle <em>Title</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.Topic#getItem <em>Item</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class Topic extends Comment implements ITopic {
 	/**
-	 * The cached value of the '{@link #getTask() <em>Task</em>}' containment reference. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getTask() <em>Task</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getTask()
 	 * @generated
 	 * @ordered
@@ -75,9 +67,9 @@ public class Topic extends Comment implements ITopic {
 	protected EList<ILocation> locations;
 
 	/**
-	 * The cached value of the '{@link #getComments() <em>Comments</em>}' reference list. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getComments() <em>Comments</em>}' reference list.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getComments()
 	 * @generated
 	 * @ordered
@@ -85,9 +77,9 @@ public class Topic extends Comment implements ITopic {
 	protected EList<IComment> comments;
 
 	/**
-	 * The cached value of the '{@link #getReview() <em>Review</em>}' reference. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getReview() <em>Review</em>}' reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getReview()
 	 * @generated
 	 * @ordered
@@ -95,9 +87,9 @@ public class Topic extends Comment implements ITopic {
 	protected IReview review;
 
 	/**
-	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getTitle()
 	 * @generated
 	 * @ordered
@@ -126,7 +118,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected Topic() {
@@ -135,7 +126,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -145,7 +135,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ITaskReference getTask() {
@@ -170,7 +159,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ITaskReference basicGetTask() {
@@ -179,7 +167,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetTask(ITaskReference newTask, NotificationChain msgs) {
@@ -198,7 +185,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setTask(ITaskReference newTask) {
@@ -219,7 +205,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public List<ILocation> getLocations() {
@@ -232,7 +217,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public List<IComment> getComments() {
@@ -245,7 +229,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IReview getReview() {
@@ -263,7 +246,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IReview basicGetReview() {
@@ -272,7 +254,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setReview(IReview newReview) {
@@ -284,7 +265,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getTitle() {
@@ -293,7 +273,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setTitle(String newTitle) {
@@ -305,7 +284,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ITopicContainer getItem() {
@@ -322,7 +300,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ITopicContainer basicGetItem() {
@@ -331,7 +308,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetItem(ITopicContainer newItem, NotificationChain msgs) {
@@ -350,7 +326,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setItem(ITopicContainer newItem) {
@@ -385,7 +360,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -405,7 +379,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -425,7 +398,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -455,7 +427,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -488,7 +459,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -518,7 +488,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -542,7 +511,6 @@ public class Topic extends Comment implements ITopic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

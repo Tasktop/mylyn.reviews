@@ -15,17 +15,13 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.mylyn.reviews.core.model.IReview;
 import org.eclipse.mylyn.reviews.core.model.IReviewGroup;
 import org.eclipse.mylyn.reviews.core.model.ITaskReference;
@@ -35,19 +31,40 @@ import org.eclipse.mylyn.reviews.core.model.ITaskReference;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.ReviewGroup#getReviews <em>Reviews</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.ReviewGroup#getReviewGroupTask <em>Review Group Task</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.ReviewGroup#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.ReviewGroup#isEnabled <em>Enabled</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.ReviewGroup#getReviews <em>Reviews</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.ReviewGroup#getReviewGroupTask <em>Review Group Task</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.ReviewGroup#getDescription <em>Description</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
-public class ReviewGroup extends ReviewComponent implements IReviewGroup {
+public class ReviewGroup extends EObjectImpl implements IReviewGroup {
 	/**
-	 * The cached value of the '{@link #getReviews() <em>Reviews</em>}' containment reference list. <!-- begin-user-doc
+	 * The default value of the '{@link #isEnabled() <em>Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ENABLED_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isEnabled() <em>Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean enabled = ENABLED_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getReviews() <em>Reviews</em>}' containment reference list.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getReviews()
 	 * @generated
 	 * @ordered
@@ -65,9 +82,9 @@ public class ReviewGroup extends ReviewComponent implements IReviewGroup {
 	protected ITaskReference reviewGroupTask;
 
 	/**
-	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getDescription()
 	 * @generated
 	 * @ordered
@@ -75,9 +92,9 @@ public class ReviewGroup extends ReviewComponent implements IReviewGroup {
 	protected static final String DESCRIPTION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getDescription()
 	 * @generated
 	 * @ordered
@@ -86,7 +103,6 @@ public class ReviewGroup extends ReviewComponent implements IReviewGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ReviewGroup() {
@@ -95,7 +111,6 @@ public class ReviewGroup extends ReviewComponent implements IReviewGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -104,8 +119,29 @@ public class ReviewGroup extends ReviewComponent implements IReviewGroup {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEnabled(boolean newEnabled) {
+		boolean oldEnabled = enabled;
+		enabled = newEnabled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ReviewsPackage.REVIEW_GROUP__ENABLED, oldEnabled,
+					enabled));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public List<IReview> getReviews() {
@@ -118,7 +154,6 @@ public class ReviewGroup extends ReviewComponent implements IReviewGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ITaskReference getReviewGroupTask() {
@@ -145,7 +180,6 @@ public class ReviewGroup extends ReviewComponent implements IReviewGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ITaskReference basicGetReviewGroupTask() {
@@ -154,7 +188,6 @@ public class ReviewGroup extends ReviewComponent implements IReviewGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetReviewGroupTask(ITaskReference newReviewGroupTask, NotificationChain msgs) {
@@ -173,7 +206,6 @@ public class ReviewGroup extends ReviewComponent implements IReviewGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setReviewGroupTask(ITaskReference newReviewGroupTask) {
@@ -195,7 +227,6 @@ public class ReviewGroup extends ReviewComponent implements IReviewGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getDescription() {
@@ -204,7 +235,6 @@ public class ReviewGroup extends ReviewComponent implements IReviewGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setDescription(String newDescription) {
@@ -217,7 +247,6 @@ public class ReviewGroup extends ReviewComponent implements IReviewGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -233,12 +262,13 @@ public class ReviewGroup extends ReviewComponent implements IReviewGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+		case ReviewsPackage.REVIEW_GROUP__ENABLED:
+			return isEnabled();
 		case ReviewsPackage.REVIEW_GROUP__REVIEWS:
 			return getReviews();
 		case ReviewsPackage.REVIEW_GROUP__REVIEW_GROUP_TASK:
@@ -253,13 +283,15 @@ public class ReviewGroup extends ReviewComponent implements IReviewGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+		case ReviewsPackage.REVIEW_GROUP__ENABLED:
+			setEnabled((Boolean) newValue);
+			return;
 		case ReviewsPackage.REVIEW_GROUP__REVIEWS:
 			getReviews().clear();
 			getReviews().addAll((Collection<? extends IReview>) newValue);
@@ -276,12 +308,14 @@ public class ReviewGroup extends ReviewComponent implements IReviewGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+		case ReviewsPackage.REVIEW_GROUP__ENABLED:
+			setEnabled(ENABLED_EDEFAULT);
+			return;
 		case ReviewsPackage.REVIEW_GROUP__REVIEWS:
 			getReviews().clear();
 			return;
@@ -297,12 +331,13 @@ public class ReviewGroup extends ReviewComponent implements IReviewGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case ReviewsPackage.REVIEW_GROUP__ENABLED:
+			return enabled != ENABLED_EDEFAULT;
 		case ReviewsPackage.REVIEW_GROUP__REVIEWS:
 			return reviews != null && !reviews.isEmpty();
 		case ReviewsPackage.REVIEW_GROUP__REVIEW_GROUP_TASK:
@@ -315,7 +350,6 @@ public class ReviewGroup extends ReviewComponent implements IReviewGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -324,7 +358,9 @@ public class ReviewGroup extends ReviewComponent implements IReviewGroup {
 			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (description: "); //$NON-NLS-1$
+		result.append(" (enabled: "); //$NON-NLS-1$
+		result.append(enabled);
+		result.append(", description: "); //$NON-NLS-1$
 		result.append(description);
 		result.append(')');
 		return result.toString();

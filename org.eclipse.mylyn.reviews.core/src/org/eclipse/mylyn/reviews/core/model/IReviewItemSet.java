@@ -14,26 +14,27 @@ import java.util.List;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Review Item Set</b></em>'. <!-- end-user-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.mylyn.reviews.core.model.IReviewItemSet#getItems <em>Items</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.core.model.IReviewItemSet#getRevision <em>Revision</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.core.model.IReviewItemSet#getItems <em>Items</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.core.model.IReviewItemSet#getRevision <em>Revision</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public interface IReviewItemSet extends IReviewItem, IDated {
 	/**
-	 * Returns the value of the '<em><b>Items</b></em>' reference list. The list contents are of type
-	 * {@link org.eclipse.mylyn.reviews.core.model.IReviewItem}. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Items</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.mylyn.reviews.core.model.IReviewItem}.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Items</em>' reference list isn't clear, there really should be more of a description
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Items</em>' reference list.
 	 * @generated
 	 */
@@ -55,11 +56,9 @@ public interface IReviewItemSet extends IReviewItem, IDated {
 	String getRevision();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.mylyn.reviews.core.model.IReviewItemSet#getRevision <em>Revision</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Revision</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.mylyn.reviews.core.model.IReviewItemSet#getRevision <em>Revision</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Revision</em>' attribute.
 	 * @see #getRevision()
 	 * @generated
 	 */

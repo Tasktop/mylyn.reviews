@@ -12,26 +12,27 @@ package org.eclipse.mylyn.reviews.core.model;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>File Revision</b></em>'. <!-- end-user-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.mylyn.reviews.core.model.IFileRevision#getPath <em>Path</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.core.model.IFileRevision#getRevision <em>Revision</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.core.model.IFileRevision#getContent <em>Content</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.core.model.IFileRevision#getFile <em>File</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.core.model.IFileRevision#getPath <em>Path</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.core.model.IFileRevision#getRevision <em>Revision</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.core.model.IFileRevision#getContent <em>Content</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.core.model.IFileRevision#getFile <em>File</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
-public interface IFileRevision extends IReviewItem {
+public interface IFileRevision extends IReviewItem, ITopicContainer {
 	/**
-	 * Returns the value of the '<em><b>Path</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Path</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Path</em>' attribute.
 	 * @see #setPath(String)
 	 * @generated
@@ -39,24 +40,22 @@ public interface IFileRevision extends IReviewItem {
 	String getPath();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.mylyn.reviews.core.model.IFileRevision#getPath <em>Path</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Path</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.mylyn.reviews.core.model.IFileRevision#getPath <em>Path</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Path</em>' attribute.
 	 * @see #getPath()
 	 * @generated
 	 */
 	void setPath(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Revision</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Revision</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Revision</em>' attribute isn't clear, there really should be more of a description
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Revision</em>' attribute.
 	 * @see #setRevision(String)
 	 * @generated
@@ -64,24 +63,22 @@ public interface IFileRevision extends IReviewItem {
 	String getRevision();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.mylyn.reviews.core.model.IFileRevision#getRevision <em>Revision</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Revision</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.mylyn.reviews.core.model.IFileRevision#getRevision <em>Revision</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Revision</em>' attribute.
 	 * @see #getRevision()
 	 * @generated
 	 */
 	void setRevision(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Content</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Content</em>' attribute isn't clear, there really should be more of a description
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Content</em>' attribute.
 	 * @see #setContent(String)
 	 * @generated
@@ -89,23 +86,21 @@ public interface IFileRevision extends IReviewItem {
 	String getContent();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.mylyn.reviews.core.model.IFileRevision#getContent <em>Content</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Content</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.mylyn.reviews.core.model.IFileRevision#getContent <em>Content</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Content</em>' attribute.
 	 * @see #getContent()
 	 * @generated
 	 */
 	void setContent(String value);
 
 	/**
-	 * Returns the value of the '<em><b>File</b></em>' reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>File</b></em>' reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>File</em>' reference isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>File</em>' reference.
 	 * @see #setFile(IFileItem)
 	 * @generated
@@ -113,11 +108,9 @@ public interface IFileRevision extends IReviewItem {
 	IFileItem getFile();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.mylyn.reviews.core.model.IFileRevision#getFile <em>File</em>}'
-	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>File</em>' reference.
+	 * Sets the value of the '{@link org.eclipse.mylyn.reviews.core.model.IFileRevision#getFile <em>File</em>}' reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>File</em>' reference.
 	 * @see #getFile()
 	 * @generated
 	 */

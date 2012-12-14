@@ -11,22 +11,19 @@
 package org.eclipse.mylyn.reviews.internal.core.model;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.mylyn.reviews.core.model.ICommentType;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Comment Type</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class CommentType extends EObjectImpl implements ICommentType {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected CommentType() {
@@ -35,7 +32,6 @@ public abstract class CommentType extends EObjectImpl implements ICommentType {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

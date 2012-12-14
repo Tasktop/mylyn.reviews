@@ -16,13 +16,14 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Indexed</b></em>'. <!-- end-user-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.mylyn.reviews.core.model.IIndexed#getIndex <em>Index</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.core.model.IIndexed#getIndex <em>Index</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public interface IIndexed extends EObject {
@@ -35,13 +36,13 @@ public interface IIndexed extends EObject {
 	};
 
 	/**
-	 * Returns the value of the '<em><b>Index</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Index</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Index</em>' attribute isn't clear, there really should be more of a description
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Index</em>' attribute.
 	 * @generated
 	 */

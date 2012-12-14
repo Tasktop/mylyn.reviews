@@ -13,29 +13,38 @@ package org.eclipse.mylyn.reviews.internal.core.model;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.eclipse.mylyn.reviews.core.model.*;
+import org.eclipse.mylyn.reviews.core.model.IComment;
+import org.eclipse.mylyn.reviews.core.model.IFileItem;
+import org.eclipse.mylyn.reviews.core.model.IFileRevision;
+import org.eclipse.mylyn.reviews.core.model.ILineLocation;
+import org.eclipse.mylyn.reviews.core.model.ILineRange;
+import org.eclipse.mylyn.reviews.core.model.IReview;
+import org.eclipse.mylyn.reviews.core.model.IReviewGroup;
+import org.eclipse.mylyn.reviews.core.model.IReviewItem;
+import org.eclipse.mylyn.reviews.core.model.IReviewItemSet;
+import org.eclipse.mylyn.reviews.core.model.IReviewsFactory;
+import org.eclipse.mylyn.reviews.core.model.ITaskReference;
+import org.eclipse.mylyn.reviews.core.model.ITopic;
+import org.eclipse.mylyn.reviews.core.model.IUser;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ReviewsFactory extends EFactoryImpl implements IReviewsFactory {
 	/**
-	 * The singleton instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The singleton instance of the factory.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final ReviewsFactory eINSTANCE = init();
 
 	/**
-	 * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static ReviewsFactory init() {
@@ -51,8 +60,8 @@ public class ReviewsFactory extends EFactoryImpl implements IReviewsFactory {
 	}
 
 	/**
-	 * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ReviewsFactory() {
@@ -61,7 +70,6 @@ public class ReviewsFactory extends EFactoryImpl implements IReviewsFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -81,8 +89,6 @@ public class ReviewsFactory extends EFactoryImpl implements IReviewsFactory {
 			return createReviewGroup();
 		case ReviewsPackage.TOPIC:
 			return createTopic();
-		case ReviewsPackage.REVIEW_COMPONENT:
-			return createReviewComponent();
 		case ReviewsPackage.FILE_ITEM:
 			return createFileItem();
 		case ReviewsPackage.REVIEW_ITEM_SET:
@@ -100,7 +106,6 @@ public class ReviewsFactory extends EFactoryImpl implements IReviewsFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IReview createReview() {
@@ -110,7 +115,6 @@ public class ReviewsFactory extends EFactoryImpl implements IReviewsFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IComment createComment() {
@@ -120,7 +124,6 @@ public class ReviewsFactory extends EFactoryImpl implements IReviewsFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IReviewItem createReviewItem() {
@@ -130,7 +133,6 @@ public class ReviewsFactory extends EFactoryImpl implements IReviewsFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IUser createUser() {
@@ -140,7 +142,6 @@ public class ReviewsFactory extends EFactoryImpl implements IReviewsFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ITaskReference createTaskReference() {
@@ -150,7 +151,6 @@ public class ReviewsFactory extends EFactoryImpl implements IReviewsFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IReviewGroup createReviewGroup() {
@@ -160,7 +160,6 @@ public class ReviewsFactory extends EFactoryImpl implements IReviewsFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ITopic createTopic() {
@@ -170,17 +169,6 @@ public class ReviewsFactory extends EFactoryImpl implements IReviewsFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public IReviewComponent createReviewComponent() {
-		ReviewComponent reviewComponent = new ReviewComponent();
-		return reviewComponent;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IFileItem createFileItem() {
@@ -190,7 +178,6 @@ public class ReviewsFactory extends EFactoryImpl implements IReviewsFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IReviewItemSet createReviewItemSet() {
@@ -200,7 +187,6 @@ public class ReviewsFactory extends EFactoryImpl implements IReviewsFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ILineLocation createLineLocation() {
@@ -210,7 +196,6 @@ public class ReviewsFactory extends EFactoryImpl implements IReviewsFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ILineRange createLineRange() {
@@ -220,7 +205,6 @@ public class ReviewsFactory extends EFactoryImpl implements IReviewsFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IFileRevision createFileRevision() {
@@ -230,7 +214,6 @@ public class ReviewsFactory extends EFactoryImpl implements IReviewsFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ReviewsPackage getReviewsPackage() {
@@ -239,7 +222,6 @@ public class ReviewsFactory extends EFactoryImpl implements IReviewsFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @deprecated
 	 * @generated
 	 */

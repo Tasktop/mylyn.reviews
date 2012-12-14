@@ -14,14 +14,18 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.mylyn.reviews.core.model.IComment;
+import org.eclipse.mylyn.reviews.core.model.ICommented;
 import org.eclipse.mylyn.reviews.core.model.ILocation;
 import org.eclipse.mylyn.reviews.core.model.ITopic;
 import org.eclipse.mylyn.reviews.core.model.ITopicContainer;
@@ -39,11 +43,31 @@ import org.eclipse.mylyn.reviews.core.model.ITopicContainer;
  * 
  * @generated
  */
-public abstract class TopicContainer extends ReviewComponent implements ITopicContainer {
+public abstract class TopicContainer extends EObjectImpl implements ITopicContainer {
 	/**
-	 * The cached value of the '{@link #getTopics() <em>Topics</em>}' reference list. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #isEnabled() <em>Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ENABLED_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isEnabled() <em>Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean enabled = ENABLED_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getTopics() <em>Topics</em>}' reference list.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getTopics()
 	 * @generated
 	 * @ordered
@@ -51,9 +75,9 @@ public abstract class TopicContainer extends ReviewComponent implements ITopicCo
 	protected EList<ITopic> topics;
 
 	/**
-	 * The cached value of the '{@link #getDirectTopics() <em>Direct Topics</em>}' reference list. <!-- begin-user-doc
+	 * The cached value of the '{@link #getDirectTopics() <em>Direct Topics</em>}' reference list.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getDirectTopics()
 	 * @generated
 	 * @ordered
@@ -62,7 +86,6 @@ public abstract class TopicContainer extends ReviewComponent implements ITopicCo
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected TopicContainer() {
@@ -71,7 +94,6 @@ public abstract class TopicContainer extends ReviewComponent implements ITopicCo
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -80,8 +102,29 @@ public abstract class TopicContainer extends ReviewComponent implements ITopicCo
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEnabled(boolean newEnabled) {
+		boolean oldEnabled = enabled;
+		enabled = newEnabled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ReviewsPackage.TOPIC_CONTAINER__ENABLED, oldEnabled,
+					enabled));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public List<IComment> getAllComments() {
@@ -103,7 +146,6 @@ public abstract class TopicContainer extends ReviewComponent implements ITopicCo
 
 	/**
 	 * <!-- begin-user-doc -->See Important note in {@link ITopicContainer#getDirectTopics()} <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public List<ITopic> getDirectTopics() {
@@ -140,7 +182,6 @@ public abstract class TopicContainer extends ReviewComponent implements ITopicCo
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -155,7 +196,6 @@ public abstract class TopicContainer extends ReviewComponent implements ITopicCo
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -169,12 +209,13 @@ public abstract class TopicContainer extends ReviewComponent implements ITopicCo
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+		case ReviewsPackage.TOPIC_CONTAINER__ENABLED:
+			return isEnabled();
 		case ReviewsPackage.TOPIC_CONTAINER__ALL_COMMENTS:
 			return getAllComments();
 		case ReviewsPackage.TOPIC_CONTAINER__TOPICS:
@@ -187,13 +228,15 @@ public abstract class TopicContainer extends ReviewComponent implements ITopicCo
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+		case ReviewsPackage.TOPIC_CONTAINER__ENABLED:
+			setEnabled((Boolean) newValue);
+			return;
 		case ReviewsPackage.TOPIC_CONTAINER__TOPICS:
 			getTopics().clear();
 			getTopics().addAll((Collection<? extends ITopic>) newValue);
@@ -208,12 +251,14 @@ public abstract class TopicContainer extends ReviewComponent implements ITopicCo
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+		case ReviewsPackage.TOPIC_CONTAINER__ENABLED:
+			setEnabled(ENABLED_EDEFAULT);
+			return;
 		case ReviewsPackage.TOPIC_CONTAINER__TOPICS:
 			getTopics().clear();
 			return;
@@ -226,12 +271,13 @@ public abstract class TopicContainer extends ReviewComponent implements ITopicCo
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case ReviewsPackage.TOPIC_CONTAINER__ENABLED:
+			return enabled != ENABLED_EDEFAULT;
 		case ReviewsPackage.TOPIC_CONTAINER__ALL_COMMENTS:
 			return !getAllComments().isEmpty();
 		case ReviewsPackage.TOPIC_CONTAINER__TOPICS:
@@ -240,6 +286,59 @@ public abstract class TopicContainer extends ReviewComponent implements ITopicCo
 			return directTopics != null && !directTopics.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == ICommented.class) {
+			switch (derivedFeatureID) {
+			case ReviewsPackage.TOPIC_CONTAINER__ALL_COMMENTS:
+				return ReviewsPackage.COMMENTED__ALL_COMMENTS;
+			default:
+				return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == ICommented.class) {
+			switch (baseFeatureID) {
+			case ReviewsPackage.COMMENTED__ALL_COMMENTS:
+				return ReviewsPackage.TOPIC_CONTAINER__ALL_COMMENTS;
+			default:
+				return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (enabled: "); //$NON-NLS-1$
+		result.append(enabled);
+		result.append(')');
+		return result.toString();
 	}
 
 } //TopicContainer

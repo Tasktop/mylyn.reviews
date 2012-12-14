@@ -14,29 +14,48 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.mylyn.reviews.core.model.*;
+import org.eclipse.mylyn.reviews.core.model.IComment;
+import org.eclipse.mylyn.reviews.core.model.ICommentType;
+import org.eclipse.mylyn.reviews.core.model.ICommented;
+import org.eclipse.mylyn.reviews.core.model.IDated;
+import org.eclipse.mylyn.reviews.core.model.IEnableable;
+import org.eclipse.mylyn.reviews.core.model.IFileItem;
+import org.eclipse.mylyn.reviews.core.model.IFileRevision;
+import org.eclipse.mylyn.reviews.core.model.IIndexed;
+import org.eclipse.mylyn.reviews.core.model.ILineLocation;
+import org.eclipse.mylyn.reviews.core.model.ILineRange;
+import org.eclipse.mylyn.reviews.core.model.ILocation;
+import org.eclipse.mylyn.reviews.core.model.IModelVersioning;
+import org.eclipse.mylyn.reviews.core.model.IReview;
+import org.eclipse.mylyn.reviews.core.model.IReviewGroup;
+import org.eclipse.mylyn.reviews.core.model.IReviewItem;
+import org.eclipse.mylyn.reviews.core.model.IReviewItemSet;
+import org.eclipse.mylyn.reviews.core.model.IReviewState;
+import org.eclipse.mylyn.reviews.core.model.ITaskReference;
+import org.eclipse.mylyn.reviews.core.model.ITopic;
+import org.eclipse.mylyn.reviews.core.model.ITopicContainer;
+import org.eclipse.mylyn.reviews.core.model.IUser;
 
 /**
  * <!-- begin-user-doc --> The <b>Switch</b> for the model's inheritance hierarchy. It supports the call
  * {@link #doSwitch(EObject) doSwitch(object)} to invoke the <code>caseXXX</code> method for each class of the model,
  * starting with the actual class of the object and proceeding up the inheritance hierarchy until a non-null result is
  * returned, which is the result of the switch. <!-- end-user-doc -->
- * 
  * @see org.eclipse.mylyn.reviews.internal.core.model.ReviewsPackage
  * @generated
  */
 public class ReviewsSwitch<T> {
 	/**
-	 * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached model package
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected static ReviewsPackage modelPackage;
 
 	/**
-	 * Creates an instance of the switch. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Creates an instance of the switch.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ReviewsSwitch() {
@@ -46,9 +65,8 @@ public class ReviewsSwitch<T> {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
-	 * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
@@ -57,9 +75,8 @@ public class ReviewsSwitch<T> {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
-	 * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
@@ -73,9 +90,8 @@ public class ReviewsSwitch<T> {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
-	 * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
@@ -85,7 +101,9 @@ public class ReviewsSwitch<T> {
 			ITopicContainer topicContainer = (ITopicContainer) theEObject;
 			T result = caseTopicContainer(topicContainer);
 			if (result == null)
-				result = caseReviewComponent(topicContainer);
+				result = caseEnableable(topicContainer);
+			if (result == null)
+				result = caseCommented(topicContainer);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -98,7 +116,9 @@ public class ReviewsSwitch<T> {
 			if (result == null)
 				result = caseDated(review);
 			if (result == null)
-				result = caseReviewComponent(review);
+				result = caseEnableable(review);
+			if (result == null)
+				result = caseCommented(review);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -107,7 +127,9 @@ public class ReviewsSwitch<T> {
 			IComment comment = (IComment) theEObject;
 			T result = caseComment(comment);
 			if (result == null)
-				result = caseReviewComponent(comment);
+				result = caseEnableable(comment);
+			if (result == null)
+				result = caseCommented(comment);
 			if (result == null)
 				result = caseIndexed(comment);
 			if (result == null)
@@ -120,9 +142,7 @@ public class ReviewsSwitch<T> {
 			IReviewItem reviewItem = (IReviewItem) theEObject;
 			T result = caseReviewItem(reviewItem);
 			if (result == null)
-				result = caseTopicContainer(reviewItem);
-			if (result == null)
-				result = caseReviewComponent(reviewItem);
+				result = caseCommented(reviewItem);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -147,7 +167,7 @@ public class ReviewsSwitch<T> {
 			ITaskReference taskReference = (ITaskReference) theEObject;
 			T result = caseTaskReference(taskReference);
 			if (result == null)
-				result = caseReviewComponent(taskReference);
+				result = caseEnableable(taskReference);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -156,7 +176,7 @@ public class ReviewsSwitch<T> {
 			IReviewState reviewState = (IReviewState) theEObject;
 			T result = caseReviewState(reviewState);
 			if (result == null)
-				result = caseReviewComponent(reviewState);
+				result = caseEnableable(reviewState);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -165,7 +185,7 @@ public class ReviewsSwitch<T> {
 			IReviewGroup reviewGroup = (IReviewGroup) theEObject;
 			T result = caseReviewGroup(reviewGroup);
 			if (result == null)
-				result = caseReviewComponent(reviewGroup);
+				result = caseEnableable(reviewGroup);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -183,7 +203,9 @@ public class ReviewsSwitch<T> {
 			if (result == null)
 				result = caseComment(topic);
 			if (result == null)
-				result = caseReviewComponent(topic);
+				result = caseEnableable(topic);
+			if (result == null)
+				result = caseCommented(topic);
 			if (result == null)
 				result = caseIndexed(topic);
 			if (result == null)
@@ -192,9 +214,9 @@ public class ReviewsSwitch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case ReviewsPackage.REVIEW_COMPONENT: {
-			IReviewComponent reviewComponent = (IReviewComponent) theEObject;
-			T result = caseReviewComponent(reviewComponent);
+		case ReviewsPackage.ENABLEABLE: {
+			IEnableable enableable = (IEnableable) theEObject;
+			T result = caseEnableable(enableable);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -203,11 +225,13 @@ public class ReviewsSwitch<T> {
 			IFileItem fileItem = (IFileItem) theEObject;
 			T result = caseFileItem(fileItem);
 			if (result == null)
-				result = caseReviewItem(fileItem);
-			if (result == null)
 				result = caseTopicContainer(fileItem);
 			if (result == null)
-				result = caseReviewComponent(fileItem);
+				result = caseReviewItem(fileItem);
+			if (result == null)
+				result = caseEnableable(fileItem);
+			if (result == null)
+				result = caseCommented(fileItem);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -220,9 +244,7 @@ public class ReviewsSwitch<T> {
 			if (result == null)
 				result = caseDated(reviewItemSet);
 			if (result == null)
-				result = caseTopicContainer(reviewItemSet);
-			if (result == null)
-				result = caseReviewComponent(reviewItemSet);
+				result = caseCommented(reviewItemSet);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -253,7 +275,9 @@ public class ReviewsSwitch<T> {
 			if (result == null)
 				result = caseTopicContainer(fileRevision);
 			if (result == null)
-				result = caseReviewComponent(fileRevision);
+				result = caseCommented(fileRevision);
+			if (result == null)
+				result = caseEnableable(fileRevision);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -261,6 +285,13 @@ public class ReviewsSwitch<T> {
 		case ReviewsPackage.MODEL_VERSIONING: {
 			IModelVersioning modelVersioning = (IModelVersioning) theEObject;
 			T result = caseModelVersioning(modelVersioning);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case ReviewsPackage.COMMENTED: {
+			ICommented commented = (ICommented) theEObject;
+			T result = caseCommented(commented);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -285,12 +316,10 @@ public class ReviewsSwitch<T> {
 	}
 
 	/**
-	 * <<<<<<< Upstream, based on origin/master ======= Returns the result of interpreting the object as an instance of
-	 * '<em>Topic Container</em>'. <!-- begin-user-doc --> This implementation returns null; returning a non-null result
+	 * Returns the result of interpreting the object as an instance of '<em>Topic Container</em>'.
+	 * <!-- begin-user-doc --> This implementation returns null; returning a non-null result
 	 * will terminate the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
+	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Topic Container</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -300,11 +329,10 @@ public class ReviewsSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Review</em>'. <!-- begin-user-doc --> This
+	 * Returns the result of interpreting the object as an instance of '<em>Review</em>'.
+	 * <!-- begin-user-doc --> This
 	 * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
+	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Review</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -314,11 +342,10 @@ public class ReviewsSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Comment</em>'. <!-- begin-user-doc --> This
+	 * Returns the result of interpreting the object as an instance of '<em>Comment</em>'.
+	 * <!-- begin-user-doc --> This
 	 * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
+	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Comment</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -328,11 +355,10 @@ public class ReviewsSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Review Item</em>'. <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>Review Item</em>'.
+	 * <!-- begin-user-doc -->
 	 * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
+	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Review Item</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -342,11 +368,10 @@ public class ReviewsSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Location</em>'. <!-- begin-user-doc --> This
+	 * Returns the result of interpreting the object as an instance of '<em>Location</em>'.
+	 * <!-- begin-user-doc --> This
 	 * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
+	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Location</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -356,11 +381,10 @@ public class ReviewsSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>User</em>'. <!-- begin-user-doc --> This
+	 * Returns the result of interpreting the object as an instance of '<em>User</em>'.
+	 * <!-- begin-user-doc --> This
 	 * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
+	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>User</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -385,11 +409,10 @@ public class ReviewsSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Review State</em>'. <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>Review State</em>'.
+	 * <!-- begin-user-doc -->
 	 * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
+	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Review State</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -399,11 +422,10 @@ public class ReviewsSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Review Group</em>'. <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>Review Group</em>'.
+	 * <!-- begin-user-doc -->
 	 * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
+	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Review Group</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -413,11 +435,10 @@ public class ReviewsSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Comment Type</em>'. <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>Comment Type</em>'.
+	 * <!-- begin-user-doc -->
 	 * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
+	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Comment Type</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -427,11 +448,10 @@ public class ReviewsSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Topic</em>'. <!-- begin-user-doc --> This
+	 * Returns the result of interpreting the object as an instance of '<em>Topic</em>'.
+	 * <!-- begin-user-doc --> This
 	 * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
+	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Topic</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -441,26 +461,25 @@ public class ReviewsSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Review Component</em>'. <!-- begin-user-doc
-	 * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc
-	 * -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Review Component</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Enableable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Enableable</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseReviewComponent(IReviewComponent object) {
+	public T caseEnableable(IEnableable object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>File Item</em>'. <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>File Item</em>'.
+	 * <!-- begin-user-doc -->
 	 * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
+	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>File Item</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -485,11 +504,10 @@ public class ReviewsSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Line Location</em>'. <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>Line Location</em>'.
+	 * <!-- begin-user-doc -->
 	 * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
+	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Line Location</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -499,11 +517,10 @@ public class ReviewsSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Line Range</em>'. <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>Line Range</em>'.
+	 * <!-- begin-user-doc -->
 	 * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
+	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Line Range</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -513,11 +530,10 @@ public class ReviewsSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>File Revision</em>'. <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>File Revision</em>'.
+	 * <!-- begin-user-doc -->
 	 * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
+	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>File Revision</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -542,11 +558,25 @@ public class ReviewsSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Indexed</em>'. <!-- begin-user-doc --> This
+	 * Returns the result of interpreting the object as an instance of '<em>Commented</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Commented</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCommented(ICommented object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Indexed</em>'.
+	 * <!-- begin-user-doc --> This
 	 * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
+	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Indexed</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -556,11 +586,10 @@ public class ReviewsSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Dated</em>'. <!-- begin-user-doc --> This
+	 * Returns the result of interpreting the object as an instance of '<em>Dated</em>'.
+	 * <!-- begin-user-doc --> This
 	 * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
+	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Dated</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -570,12 +599,11 @@ public class ReviewsSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'. <!-- begin-user-doc --> This
+	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
+	 * <!-- begin-user-doc --> This
 	 * implementation returns null; returning a non-null result will terminate the switch, but this is the last case
 	 * anyway. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
+	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated

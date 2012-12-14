@@ -27,19 +27,19 @@ import org.eclipse.mylyn.reviews.core.model.ILineRange;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.LineLocation#getRanges <em>Ranges</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.LineLocation#getRangeMin <em>Range Min</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.internal.core.model.LineLocation#getRangeMax <em>Range Max</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.LineLocation#getRanges <em>Ranges</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.LineLocation#getRangeMin <em>Range Min</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.internal.core.model.LineLocation#getRangeMax <em>Range Max</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class LineLocation extends Location implements ILineLocation {
 	/**
-	 * The cached value of the '{@link #getRanges() <em>Ranges</em>}' containment reference list. <!-- begin-user-doc
+	 * The cached value of the '{@link #getRanges() <em>Ranges</em>}' containment reference list.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getRanges()
 	 * @generated
 	 * @ordered
@@ -47,9 +47,9 @@ public class LineLocation extends Location implements ILineLocation {
 	protected EList<ILineRange> ranges;
 
 	/**
-	 * The default value of the '{@link #getRangeMin() <em>Range Min</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getRangeMin() <em>Range Min</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getRangeMin()
 	 * @generated
 	 * @ordered
@@ -57,9 +57,9 @@ public class LineLocation extends Location implements ILineLocation {
 	protected static final int RANGE_MIN_EDEFAULT = 0;
 
 	/**
-	 * The default value of the '{@link #getRangeMax() <em>Range Max</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getRangeMax() <em>Range Max</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getRangeMax()
 	 * @generated
 	 * @ordered
@@ -68,7 +68,6 @@ public class LineLocation extends Location implements ILineLocation {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected LineLocation() {
@@ -77,7 +76,6 @@ public class LineLocation extends Location implements ILineLocation {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -87,7 +85,6 @@ public class LineLocation extends Location implements ILineLocation {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public List<ILineRange> getRanges() {
@@ -138,7 +135,6 @@ public class LineLocation extends Location implements ILineLocation {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -152,7 +148,6 @@ public class LineLocation extends Location implements ILineLocation {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -170,7 +165,6 @@ public class LineLocation extends Location implements ILineLocation {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -187,7 +181,6 @@ public class LineLocation extends Location implements ILineLocation {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -202,7 +195,6 @@ public class LineLocation extends Location implements ILineLocation {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

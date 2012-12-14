@@ -43,9 +43,9 @@ import org.eclipse.mylyn.reviews.core.model.IReviewItemSet;
  */
 public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 	/**
-	 * The default value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute. <!-- begin-user-doc -->
+	 * The default value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getCreationDate()
 	 * @generated
 	 * @ordered
@@ -53,9 +53,9 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 	protected static final Date CREATION_DATE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute. <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getCreationDate()
 	 * @generated
 	 * @ordered
@@ -83,9 +83,9 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 	protected Date modificationDate = MODIFICATION_DATE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getItems() <em>Items</em>}' reference list. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getItems() <em>Items</em>}' reference list.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getItems()
 	 * @generated
 	 * @ordered
@@ -93,9 +93,9 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 	protected EList<IReviewItem> items;
 
 	/**
-	 * The default value of the '{@link #getRevision() <em>Revision</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getRevision() <em>Revision</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getRevision()
 	 * @generated
 	 * @ordered
@@ -103,9 +103,9 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 	protected static final String REVISION_EDEFAULT = ""; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getRevision() <em>Revision</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getRevision() <em>Revision</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getRevision()
 	 * @generated
 	 * @ordered
@@ -114,7 +114,6 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ReviewItemSet() {
@@ -123,7 +122,6 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -133,7 +131,6 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Date getCreationDate() {
@@ -142,7 +139,6 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setCreationDate(Date newCreationDate) {
@@ -155,7 +151,6 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Date getModificationDate() {
@@ -164,7 +159,6 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setModificationDate(Date newModificationDate) {
@@ -189,7 +183,6 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public List<IReviewItem> getItems() {
@@ -217,7 +210,6 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getRevision() {
@@ -226,7 +218,6 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setRevision(String newRevision) {
@@ -239,7 +230,6 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -259,7 +249,6 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -285,7 +274,6 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -309,7 +297,6 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -331,7 +318,6 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -351,7 +337,6 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -371,7 +356,6 @@ public class ReviewItemSet extends ReviewItem implements IReviewItemSet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

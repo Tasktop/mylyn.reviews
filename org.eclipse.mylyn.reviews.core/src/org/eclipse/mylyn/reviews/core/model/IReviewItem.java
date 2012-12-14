@@ -12,27 +12,28 @@ package org.eclipse.mylyn.reviews.core.model;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Review Item</b></em>'. <!-- end-user-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.mylyn.reviews.core.model.IReviewItem#getAddedBy <em>Added By</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.core.model.IReviewItem#getReview <em>Review</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.core.model.IReviewItem#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.mylyn.reviews.core.model.IReviewItem#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.core.model.IReviewItem#getAddedBy <em>Added By</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.core.model.IReviewItem#getReview <em>Review</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.core.model.IReviewItem#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.mylyn.reviews.core.model.IReviewItem#getId <em>Id</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
-public interface IReviewItem extends ITopicContainer {
+public interface IReviewItem extends ICommented {
 	/**
-	 * Returns the value of the '<em><b>Added By</b></em>' reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Added By</b></em>' reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Added By</em>' reference isn't clear, there really should be more of a description
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Added By</em>' reference.
 	 * @see #setAddedBy(IUser)
 	 * @generated
@@ -40,24 +41,22 @@ public interface IReviewItem extends ITopicContainer {
 	IUser getAddedBy();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.mylyn.reviews.core.model.IReviewItem#getAddedBy <em>Added By</em>}'
-	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Added By</em>' reference.
+	 * Sets the value of the '{@link org.eclipse.mylyn.reviews.core.model.IReviewItem#getAddedBy <em>Added By</em>}' reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Added By</em>' reference.
 	 * @see #getAddedBy()
 	 * @generated
 	 */
 	void setAddedBy(IUser value);
 
 	/**
-	 * Returns the value of the '<em><b>Review</b></em>' reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Review</b></em>' reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Review</em>' reference isn't clear, there really should be more of a description
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Review</em>' reference.
 	 * @see #setReview(IReview)
 	 * @generated
@@ -65,23 +64,21 @@ public interface IReviewItem extends ITopicContainer {
 	IReview getReview();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.mylyn.reviews.core.model.IReviewItem#getReview <em>Review</em>}'
-	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Review</em>' reference.
+	 * Sets the value of the '{@link org.eclipse.mylyn.reviews.core.model.IReviewItem#getReview <em>Review</em>}' reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Review</em>' reference.
 	 * @see #getReview()
 	 * @generated
 	 */
 	void setReview(IReview value);
 
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @generated
@@ -91,21 +88,19 @@ public interface IReviewItem extends ITopicContainer {
 	/**
 	 * Sets the value of the '{@link org.eclipse.mylyn.reviews.core.model.IReviewItem#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Name</em>' attribute.
+	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Id</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
 	 * @generated
@@ -115,9 +110,7 @@ public interface IReviewItem extends ITopicContainer {
 	/**
 	 * Sets the value of the '{@link org.eclipse.mylyn.reviews.core.model.IReviewItem#getId <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Id</em>' attribute.
+	 * @param value the new value of the '<em>Id</em>' attribute.
 	 * @see #getId()
 	 * @generated
 	 */

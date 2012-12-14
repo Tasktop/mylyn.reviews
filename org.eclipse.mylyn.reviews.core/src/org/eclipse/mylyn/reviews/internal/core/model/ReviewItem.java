@@ -10,18 +10,12 @@
  */
 package org.eclipse.mylyn.reviews.internal.core.model;
 
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.mylyn.reviews.core.model.IComment;
-import org.eclipse.mylyn.reviews.core.model.ILocation;
 import org.eclipse.mylyn.reviews.core.model.IReview;
 import org.eclipse.mylyn.reviews.core.model.IReviewItem;
-import org.eclipse.mylyn.reviews.core.model.ITopic;
 import org.eclipse.mylyn.reviews.core.model.IUser;
 
 /**
@@ -38,7 +32,7 @@ import org.eclipse.mylyn.reviews.core.model.IUser;
  * 
  * @generated
  */
-public class ReviewItem extends TopicContainer implements IReviewItem {
+public class ReviewItem extends Commented implements IReviewItem {
 	/**
 	 * The cached value of the '{@link #getAddedBy() <em>Added By</em>}' reference. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -117,16 +111,6 @@ public class ReviewItem extends TopicContainer implements IReviewItem {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> Unmodifiable and not updated. <!-- end-user-doc -->
-	 * 
-	 * @generated NOT
-	 */
-	@Override
-	public List<IComment> getAllComments() {
-		return new BasicEList<IComment>(getTopics());
-	}
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
@@ -136,9 +120,10 @@ public class ReviewItem extends TopicContainer implements IReviewItem {
 			InternalEObject oldAddedBy = (InternalEObject) addedBy;
 			addedBy = (IUser) eResolveProxy(oldAddedBy);
 			if (addedBy != oldAddedBy) {
-				if (eNotificationRequired())
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ReviewsPackage.REVIEW_ITEM__ADDED_BY,
 							oldAddedBy, addedBy));
+				}
 			}
 		}
 		return addedBy;
@@ -161,9 +146,10 @@ public class ReviewItem extends TopicContainer implements IReviewItem {
 	public void setAddedBy(IUser newAddedBy) {
 		IUser oldAddedBy = addedBy;
 		addedBy = newAddedBy;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ReviewsPackage.REVIEW_ITEM__ADDED_BY, oldAddedBy,
 					addedBy));
+		}
 	}
 
 	/**
@@ -176,9 +162,10 @@ public class ReviewItem extends TopicContainer implements IReviewItem {
 			InternalEObject oldReview = (InternalEObject) review;
 			review = (IReview) eResolveProxy(oldReview);
 			if (review != oldReview) {
-				if (eNotificationRequired())
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ReviewsPackage.REVIEW_ITEM__REVIEW,
 							oldReview, review));
+				}
 			}
 		}
 		return review;
@@ -201,8 +188,9 @@ public class ReviewItem extends TopicContainer implements IReviewItem {
 	public void setReview(IReview newReview) {
 		IReview oldReview = review;
 		review = newReview;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ReviewsPackage.REVIEW_ITEM__REVIEW, oldReview, review));
+		}
 	}
 
 	/**
@@ -222,8 +210,9 @@ public class ReviewItem extends TopicContainer implements IReviewItem {
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ReviewsPackage.REVIEW_ITEM__NAME, oldName, name));
+		}
 	}
 
 	/**
@@ -243,28 +232,9 @@ public class ReviewItem extends TopicContainer implements IReviewItem {
 	public void setId(String newId) {
 		String oldId = id;
 		id = newId;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ReviewsPackage.REVIEW_ITEM__ID, oldId, id));
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated NOT
-	 */
-	@Override
-	public ITopic createTopicComment(ILocation initalLocation, String commentText) {
-		ITopic topic = super.createTopicComment(initalLocation, commentText);
-		IUser user = getAddedBy();
-		if (user == null) {
-			user = ReviewsFactory.eINSTANCE.createUser();
-			user.setDisplayName("<Undefined>"); //$NON-NLS-1$
 		}
-		topic.setAuthor(user);
-		for (IComment comment : topic.getComments()) {
-			comment.setAuthor(topic.getAuthor());
-		}
-		return topic;
 	}
 
 	/**
@@ -276,12 +246,14 @@ public class ReviewItem extends TopicContainer implements IReviewItem {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case ReviewsPackage.REVIEW_ITEM__ADDED_BY:
-			if (resolve)
+			if (resolve) {
 				return getAddedBy();
+			}
 			return basicGetAddedBy();
 		case ReviewsPackage.REVIEW_ITEM__REVIEW:
-			if (resolve)
+			if (resolve) {
 				return getReview();
+			}
 			return basicGetReview();
 		case ReviewsPackage.REVIEW_ITEM__NAME:
 			return getName();
@@ -367,8 +339,9 @@ public class ReviewItem extends TopicContainer implements IReviewItem {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
