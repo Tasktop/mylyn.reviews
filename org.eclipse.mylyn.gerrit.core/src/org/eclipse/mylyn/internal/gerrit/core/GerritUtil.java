@@ -17,6 +17,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.Assert;
@@ -67,6 +68,8 @@ public class GerritUtil {
 
 	private static final IReviewsFactory FACTORY = IReviewsFactory.INSTANCE;
 
+	private static final String PATCH_SET_STRING = "Patch Set ";
+
 	public static GerritChange getChange(TaskData taskData) {
 		JSonSupport json = new JSonSupport();
 		TaskAttribute attribute = taskData.getRoot().getAttribute(GerritTaskSchema.getDefault().OBJ_REVIEW.getKey());
@@ -84,8 +87,11 @@ public class GerritUtil {
 		review.setOwner(reviewAuthor);
 		review.setCreationDate(change.getCreatedOn());
 		review.setModificationDate(change.getLastUpdatedOn());
+
+		Map<Integer, List<ITopic>> topicsForPatchSet = new HashMap<Integer, List<ITopic>>();
 		for (ChangeMessage message : detail.getMessages()) {
-			ITopic topic = review.createTopicComment(null, message.getMessage());
+			String text = message.getMessage();
+			ITopic topic = review.createTopicComment(null, text);
 			topic.setDraft(false);
 			topic.setCreationDate(message.getWrittenOn());
 			for (IComment comment : topic.getComments()) {
@@ -98,14 +104,33 @@ public class GerritUtil {
 					comment.setAuthor(topic.getAuthor());
 				}
 			}
+			int end = text.indexOf(":");
+			int start = text.indexOf(PATCH_SET_STRING);
+			if (end > 0 && start != -1) {
+				String numberString = text.substring(PATCH_SET_STRING.length(), end);
+				try {
+					int patchSetNumber = Integer.valueOf(numberString);
+					List<ITopic> patchComments = topicsForPatchSet.get(patchSetNumber);
+					if (patchComments == null) {
+						patchComments = new ArrayList<ITopic>();
+						topicsForPatchSet.put(patchSetNumber, patchComments);
+					}
+					patchComments.add(topic);
+				} catch (NumberFormatException e) {
+				}
+			}
 		}
 
-		review.setId(detail.getChange().getId().get() + "");
+		review.setId(change.getId().get() + "");
 		List<PatchSet> patchSets = detail.getPatchSets();
 		for (PatchSet patchSet : patchSets) {
 			IReviewItemSet itemSet = toReviewItemSet(detail, null, patchSet);
 			itemSet.setReview(review);
 			review.getItems().add(itemSet);
+			List<ITopic> patchSetTopics = topicsForPatchSet.get(patchSet.getPatchSetId());
+			if (patchSetTopics != null) {
+				itemSet.getDirectTopics().addAll(patchSetTopics);
+			}
 		}
 		return review;
 	}
