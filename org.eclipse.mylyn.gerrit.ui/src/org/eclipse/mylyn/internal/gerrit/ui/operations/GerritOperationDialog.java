@@ -13,12 +13,18 @@
 package org.eclipse.mylyn.internal.gerrit.ui.operations;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.fieldassist.ContentProposal;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
+import org.eclipse.jface.fieldassist.IContentProposal;
 import org.eclipse.jface.fieldassist.IContentProposalProvider;
 import org.eclipse.jface.fieldassist.TextContentAdapter;
 import org.eclipse.jface.operation.IRunnableWithProgress;
@@ -26,7 +32,9 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.mylyn.commons.workbench.editors.CommonTextSupport;
 import org.eclipse.mylyn.commons.workbench.forms.CommonFormUtil;
 import org.eclipse.mylyn.internal.gerrit.core.GerritOperationFactory;
+import org.eclipse.mylyn.internal.gerrit.core.client.GerritClient;
 import org.eclipse.mylyn.internal.gerrit.core.client.GerritConfiguration;
+import org.eclipse.mylyn.internal.gerrit.core.client.GerritException;
 import org.eclipse.mylyn.internal.gerrit.core.operations.GerritOperation;
 import org.eclipse.mylyn.internal.gerrit.core.operations.RefreshConfigRequest;
 import org.eclipse.mylyn.internal.gerrit.ui.GerritUiPlugin;
@@ -51,6 +59,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.statushandlers.StatusManager;
 
+import com.google.gerrit.common.data.AccountInfo;
 import com.google.gerrit.common.data.GerritConfig;
 
 /**
@@ -188,7 +197,7 @@ public abstract class GerritOperationDialog extends ProgressDialog {
 		return editor;
 	}
 
-	protected Text createPersonTextEditor(Composite composite, String value) {
+	protected Text createPersonTextEditor(Composite composite, String value, final GerritClient client) {
 		int style = SWT.FLAT | SWT.BORDER | SWT.MULTI | SWT.WRAP;
 		Text editor = new Text(composite, style);
 		if (value != null) {
@@ -197,7 +206,27 @@ public abstract class GerritOperationDialog extends ProgressDialog {
 		TaskRepository repository = TasksUi.getRepositoryManager().getRepository(task.getConnectorKind(),
 				task.getRepositoryUrl());
 		ITasksUiFactory uiFactory = TasksUi.getUiFactory();
-		IContentProposalProvider proposalProvider = uiFactory.createPersonContentProposalProvider(repository);
+		IContentProposalProvider proposalProvider = new IContentProposalProvider() {
+
+			@Override
+			public IContentProposal[] getProposals(String contents, int position) {
+				List<IContentProposal> proposals = new ArrayList<IContentProposal>();
+				if (!StringUtils.isEmpty(contents)) {
+					try {
+						List<AccountInfo> accountInfos = client.getProposals(new NullProgressMonitor(), contents, 100);
+						for (AccountInfo accountInfo : accountInfos) {
+							IContentProposal proposal = new ContentProposal(accountInfo.getFullName(),
+									accountInfo.getPreferredEmail());
+							proposals.add(proposal);
+						}
+					} catch (GerritException e) {
+						StatusManager.getManager().handle(
+								new Status(IStatus.ERROR, GerritUiPlugin.PLUGIN_ID, "Couldn't load proposals."));
+					}
+				}
+				return proposals.toArray(new IContentProposal[proposals.size()]);
+			}
+		};
 		ILabelProvider proposalLabelProvider = uiFactory.createPersonContentProposalLabelProvider(repository);
 
 		ContentAssistCommandAdapter adapter = new ContentAssistCommandAdapter(editor, new TextContentAdapter(),

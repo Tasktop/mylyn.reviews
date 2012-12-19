@@ -16,6 +16,7 @@ import java.util.List;
 
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
+import org.eclipse.mylyn.internal.gerrit.core.client.GerritClient;
 import org.eclipse.mylyn.internal.gerrit.core.operations.AddReviewersRequest;
 import org.eclipse.mylyn.internal.gerrit.core.operations.GerritOperation;
 import org.eclipse.mylyn.internal.gerrit.ui.GerritUiPlugin;
@@ -37,8 +38,11 @@ public class AddReviewersDialog extends GerritOperationDialog {
 
 	private Text messageEditor;
 
-	public AddReviewersDialog(Shell parentShell, ITask task) {
+	private final GerritClient client;
+
+	public AddReviewersDialog(Shell parentShell, GerritClient client, ITask task) {
 		super(parentShell, task);
+		this.client = client;
 	}
 
 	@Override
@@ -68,7 +72,7 @@ public class AddReviewersDialog extends GerritOperationDialog {
 		GridLayout layout = GridLayoutFactory.fillDefaults().margins(8, 8).create();
 		composite.setLayout(layout);
 
-		messageEditor = createPersonTextEditor(composite, "");
+		messageEditor = createPersonTextEditor(composite, "", client);
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(messageEditor);
 
 		return composite;

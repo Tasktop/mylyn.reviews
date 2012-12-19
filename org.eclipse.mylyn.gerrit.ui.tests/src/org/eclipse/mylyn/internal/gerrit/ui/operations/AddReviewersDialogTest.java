@@ -41,7 +41,7 @@ public class AddReviewersDialogTest {
 		TaskRepository repository = new TaskRepository(GerritConnector.CONNECTOR_KIND, "url");
 		TasksUi.getRepositoryManager().addRepository(repository);
 		ITask task = TasksUi.getRepositoryModel().createTask(repository, "1");
-		dialog = new AddReviewersDialog(shell, task);
+		dialog = new AddReviewersDialog(shell, null, task);
 		dialog.create();
 	}
 

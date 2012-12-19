@@ -54,6 +54,7 @@ import org.eclipse.mylyn.reviews.core.model.IUser;
 import org.eclipse.osgi.util.NLS;
 
 import com.google.gerrit.common.data.AccountDashboardInfo;
+import com.google.gerrit.common.data.AccountInfo;
 import com.google.gerrit.common.data.AccountInfoCache;
 import com.google.gerrit.common.data.AccountService;
 import com.google.gerrit.common.data.ChangeDetail;
@@ -64,6 +65,7 @@ import com.google.gerrit.common.data.PatchScript;
 import com.google.gerrit.common.data.PatchSetDetail;
 import com.google.gerrit.common.data.ReviewerResult;
 import com.google.gerrit.common.data.SingleListChangeInfo;
+import com.google.gerrit.common.data.SuggestService;
 import com.google.gerrit.common.data.SystemInfoService;
 import com.google.gerrit.reviewdb.Account;
 import com.google.gerrit.reviewdb.AccountDiffPreference;
@@ -343,6 +345,16 @@ public class GerritClient {
 			myDiffPreference = diffPreference;
 		}
 		return myDiffPreference;
+	}
+
+	public List<AccountInfo> getProposals(IProgressMonitor monitor, final String query, final int limit)
+			throws GerritException {
+		return execute(monitor, new Operation<List<AccountInfo>>() {
+			@Override
+			public void execute(IProgressMonitor monitor) throws GerritException {
+				getSuggestService().suggestAccount(query, limit, this);
+			}
+		});
 	}
 
 	public GerritSystemInfo getInfo(IProgressMonitor monitor) throws GerritException {
@@ -855,6 +867,10 @@ public class GerritClient {
 
 	private SystemInfoService getSystemInfoService() {
 		return getService(SystemInfoService.class);
+	}
+
+	private SuggestService getSuggestService() {
+		return getService(SuggestService.class);
 	}
 
 	private List<Project> getVisibleProjects(IProgressMonitor monitor, GerritConfig gerritConfig)

@@ -18,8 +18,10 @@ import java.util.List;
 
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
+import org.eclipse.mylyn.internal.gerrit.core.GerritConnector;
 import org.eclipse.mylyn.internal.gerrit.core.GerritUtil;
 import org.eclipse.mylyn.internal.gerrit.core.client.GerritChange;
+import org.eclipse.mylyn.internal.gerrit.core.client.GerritClient;
 import org.eclipse.mylyn.internal.gerrit.ui.operations.AddReviewersDialog;
 import org.eclipse.mylyn.tasks.ui.TasksUiUtil;
 import org.eclipse.osgi.util.NLS;
@@ -187,7 +189,8 @@ public class ReviewSection extends AbstractGerritSection {
 	}
 
 	private void doAddReviewers() {
-		AddReviewersDialog dialog = new AddReviewersDialog(getShell(), getTask());
+		GerritClient client = ((GerritConnector) getTaskEditorPage().getConnector()).getClient(getTaskEditorPage().getTaskRepository());
+		AddReviewersDialog dialog = new AddReviewersDialog(getShell(), client, getTask());
 		openOperationDialog(dialog);
 	}
 
