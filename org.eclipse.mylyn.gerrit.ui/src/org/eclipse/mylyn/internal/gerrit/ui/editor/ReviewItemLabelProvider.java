@@ -14,12 +14,16 @@ package org.eclipse.mylyn.internal.gerrit.ui.editor;
 
 import java.util.List;
 
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jface.viewers.StyledString.Styler;
+import org.eclipse.mylyn.commons.ui.CommonImages;
 import org.eclipse.mylyn.commons.workbench.CommonImageManger;
+import org.eclipse.mylyn.internal.gerrit.ui.GerritImages;
 import org.eclipse.mylyn.reviews.core.model.IFileItem;
+import org.eclipse.mylyn.reviews.core.model.IFileRevision;
 import org.eclipse.mylyn.reviews.core.model.IReviewItem;
 import org.eclipse.mylyn.reviews.core.model.ITopic;
 import org.eclipse.osgi.util.NLS;
@@ -54,7 +58,33 @@ public class ReviewItemLabelProvider extends LabelProvider implements IStyledLab
 	public Image getImage(Object element) {
 		if (element instanceof IReviewItem) {
 			IReviewItem item = (IReviewItem) element;
-			return imageManager.getFileImage(item.getName());
+			Image baseImage = imageManager.getFileImage(item.getName());
+			ImageDescriptor baseImageDescriptor = ImageDescriptor.createFromImage(baseImage);
+			if (element instanceof IFileItem) {
+				IFileItem fileItem = (IFileItem) element;
+				if (fileItem.getBase() != null & fileItem.getTarget() != null) {
+					IFileRevision fileBase = fileItem.getBase();
+					IFileRevision fileTarget = fileItem.getTarget();
+					if (fileBase.getPath() != null && fileTarget.getPath() != null) {
+						if (!fileBase.getPath().equals(fileTarget.getPath())) {
+							ImageDescriptor overlay = GerritImages.OVERLAY_DELTA;
+							Image icon = CommonImages.getImageWithOverlay(baseImageDescriptor, overlay, true, true);
+							return icon;
+						}
+					} else if (fileBase.getPath() == null && fileTarget.getPath() != null) {
+						ImageDescriptor overlay = GerritImages.OVERLAY_PLUS;
+						Image icon = CommonImages.getImageWithOverlay(baseImageDescriptor, overlay, true, true);
+						return icon;
+					} else if (fileBase.getPath() != null && fileTarget.getPath() == null) {
+						ImageDescriptor overlay = GerritImages.OVERLAY_MINUS;
+						Image icon = CommonImages.getImageWithOverlay(baseImageDescriptor, overlay, true, true);
+						return icon;
+					}
+				} else {
+
+				}
+			}
+			return baseImage;
 		}
 		return null;
 	}
@@ -92,6 +122,29 @@ public class ReviewItemLabelProvider extends LabelProvider implements IStyledLab
 			return styledString;
 		}
 		return new StyledString();
+	}
+
+	public String getToolTipHoverText(Object element) {
+		if (element instanceof IFileItem) {
+			IFileItem fileItem = (IFileItem) element;
+			if (fileItem.getBase() != null && fileItem.getTarget() != null) {
+				IFileRevision base = fileItem.getBase();
+				IFileRevision target = fileItem.getTarget();
+				if (base.getPath() != null && target.getPath() != null) {
+					if (!base.getPath().equals(target.getPath())) {
+						return base.getPath();
+					} else {
+						return null;
+					}
+				} else {
+					return null;
+				}
+			} else {
+				return null;
+			}
+		} else {
+			return null;
+		}
 	}
 
 	private class Stats {

@@ -27,6 +27,12 @@ public class GerritImages {
 
 	public static final ImageDescriptor OVERLAY_REVIEW = create("eview16/overlay-review.png"); //$NON-NLS-1$
 
+	public static final ImageDescriptor OVERLAY_PLUS = create("eview16/overlay-plus.gif"); //$NON-NLS-1$
+
+	public static final ImageDescriptor OVERLAY_MINUS = create("eview16/overlay-minus.gif"); //$NON-NLS-1$
+
+	public static final ImageDescriptor OVERLAY_DELTA = create("eview16/overlay-delta.gif"); //$NON-NLS-1$
+
 	public static final ImageDescriptor GERRIT_OVERLAY = create("gerrit-overlay.png"); //$NON-NLS-1$
 
 	public static final ImageDescriptor GERRIT = create("gerrit.png"); //$NON-NLS-1$

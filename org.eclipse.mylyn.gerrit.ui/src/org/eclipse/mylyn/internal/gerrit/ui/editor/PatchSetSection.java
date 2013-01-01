@@ -46,6 +46,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.OpenEvent;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.mylyn.internal.gerrit.core.GerritCorePlugin;
@@ -79,14 +80,19 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IFormColors;
 import org.eclipse.ui.forms.events.ExpansionAdapter;
@@ -623,6 +629,71 @@ public class PatchSetSection extends AbstractGerritSection {
 				}
 			}
 		});
+
+		Listener lableListener = new Listener() {
+			Shell tipbox = null;
+
+			Label label = null;
+
+			@Override
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Dispose:
+				case SWT.MouseDown:
+				case SWT.MouseMove: {
+					if (tipbox == null) {
+						break;
+					}
+					tipbox.setVisible(false);
+					tipbox.dispose();
+					tipbox = null;
+					label = null;
+					break;
+				}
+				case SWT.MouseHover: {
+					Point point = new Point(e.x, e.y);
+					ViewerCell cell = viewer.getCell(point);
+					if (cell != null) {
+						if (cell.getBounds().contains(point)) {
+							if (tipbox != null && !tipbox.isDisposed()) {
+								tipbox.dispose();
+							}
+							tipbox = new Shell(viewer.getControl().getShell(), SWT.ON_TOP | SWT.NO_FOCUS | SWT.TOOL);
+							tipbox.setBackground(viewer.getControl().getBackground());
+							FillLayout layout = new FillLayout();
+							tipbox.setLayout(layout);
+							label = new Label(tipbox, SWT.NONE);
+							label.setForeground(viewer.getControl()
+									.getDisplay()
+									.getSystemColor(SWT.COLOR_INFO_FOREGROUND));
+							label.setBackground(viewer.getControl()
+									.getDisplay()
+									.getSystemColor(SWT.COLOR_INFO_BACKGROUND));
+							label.setData("This is a cell", cell); //$NON-NLS-1$
+
+							DelegatingStyledCellLabelProvider labelProvider = (DelegatingStyledCellLabelProvider) viewer.getLabelProvider(0);
+							String labelText = ((ReviewItemLabelProvider) labelProvider.getStyledStringProvider()).getToolTipHoverText(cell.getElement());
+							if (labelText != null) {
+								label.setText("Renamed from : " + labelText); //$NON-NLS-1$
+								Point space = tipbox.computeSize(SWT.DEFAULT, SWT.DEFAULT);
+								Rectangle tableBounds = viewer.getTable().getBounds();
+								Point tooltipBounds = viewer.getTable().toDisplay(tableBounds.x, tableBounds.y);
+								tipbox.setBounds(tooltipBounds.x, tooltipBounds.y, space.x, space.y);
+								tipbox.setVisible(true);
+							}
+							break;
+						}
+					}
+					break;
+				}
+				}
+			}
+
+		};
+		viewer.getTable().addListener(SWT.Dispose, lableListener);
+		viewer.getTable().addListener(SWT.MouseMove, lableListener);
+		viewer.getTable().addListener(SWT.MouseHover, lableListener);
+		viewer.getTable().addListener(SWT.MouseDown, lableListener);
 
 		IReviewItemSet itemSet = GerritUtil.createInput(changeDetail, new GerritPatchSetContent(patchSetDetail), cache);
 		viewer.setInput(itemSet);
