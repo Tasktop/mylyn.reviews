@@ -14,13 +14,19 @@ package org.eclipse.mylyn.internal.gerrit.ui;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.mylyn.commons.workbench.EditorHandle;
 import org.eclipse.mylyn.commons.workbench.browser.AbstractUrlHandler;
 import org.eclipse.mylyn.internal.gerrit.core.GerritConnector;
+import org.eclipse.mylyn.internal.gerrit.ui.editor.GerritTaskEditorPage;
+import org.eclipse.mylyn.internal.gerrit.ui.editor.PatchSetSection;
 import org.eclipse.mylyn.tasks.core.TaskRepository;
 import org.eclipse.mylyn.tasks.ui.TasksUi;
 import org.eclipse.mylyn.tasks.ui.TasksUiUtil;
+import org.eclipse.mylyn.tasks.ui.editors.TaskEditor;
 import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.forms.editor.IFormPage;
 
 /**
  * @author Steffen Pingel
@@ -39,7 +45,28 @@ public class GerritUrlHandler extends AbstractUrlHandler {
 		for (TaskRepository repository : TasksUi.getRepositoryManager().getRepositories(GerritConnector.CONNECTOR_KIND)) {
 			String taskId = getTaskId(repository, url);
 			if (taskId != null) {
-				return TasksUiUtil.openTaskWithResult(repository, taskId);
+				EditorHandle editorHandle = TasksUiUtil.openTaskWithResult(repository, taskId);
+				String taskUrl = TasksUi.getRepositoryConnector(GerritConnector.CONNECTOR_KIND).getTaskUrl(
+						repository.getUrl(), taskId);
+				String pageUrl = StringUtils.remove(url, taskUrl);
+				if (!StringUtils.isEmpty(pageUrl)) {
+					try {
+						Integer pageNumber = Integer.valueOf(pageUrl);
+						IWorkbenchPart part = editorHandle.getPart();
+						if (part instanceof TaskEditor) {
+							TaskEditor taskEditor = (TaskEditor) part;
+							IFormPage activePageInstance = taskEditor.getActivePageInstance();
+							if (activePageInstance instanceof GerritTaskEditorPage) {
+								GerritTaskEditorPage gerritPage = (GerritTaskEditorPage) activePageInstance;
+								PatchSetSection section = (PatchSetSection) gerritPage.getPart(PatchSetSection.class.getName());
+								section.expandPatchSet(pageNumber);
+							}
+						}
+					} catch (NumberFormatException e) {
+
+					}
+				}
+				return editorHandle;
 			}
 		}
 		return null;
@@ -56,4 +83,8 @@ public class GerritUrlHandler extends AbstractUrlHandler {
 		return null;
 	}
 
+	@Override
+	public int getPriority() {
+		return 200;
+	}
 }

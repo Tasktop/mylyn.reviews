@@ -114,6 +114,39 @@ import com.google.gerrit.reviewdb.PatchSet;
  */
 public class PatchSetSection extends AbstractGerritSection {
 
+	private final class SectionExpander extends ExpansionAdapter {
+		private final Section subSection;
+
+		private final ChangeDetail changeDetail;
+
+		private final PatchSetDetail patchSetDetail;
+
+		private final PatchSetPublishDetail publishDetail;
+
+		private SectionExpander(Section subSection, ChangeDetail changeDetail, PatchSetDetail patchSetDetail,
+				PatchSetPublishDetail publishDetail) {
+			this.subSection = subSection;
+			this.changeDetail = changeDetail;
+			this.patchSetDetail = patchSetDetail;
+			this.publishDetail = publishDetail;
+		}
+
+		@Override
+		public void expansionStateChanged(ExpansionEvent e) {
+			if (subSection.getClient() == null) {
+				createSubSectionContents(changeDetail, patchSetDetail, publishDetail, subSection);
+			}
+		}
+
+		public void focusOn() {
+			if (!subSection.isExpanded()) {
+				subSection.setExpanded(true);
+				expansionStateChanged(null);
+			}
+			getManagedForm().getForm().showControl(subSection.getClient());
+		}
+	}
+
 	private class CompareAction extends Action {
 
 		private final PatchSet base;
@@ -157,6 +190,8 @@ public class PatchSetSection extends AbstractGerritSection {
 
 	private final ReviewItemCache cache;
 
+	private List<SectionExpander> expanders;
+
 	public PatchSetSection() {
 		setPartName("Patch Sets");
 		this.jobs = new ArrayList<Job>();
@@ -194,6 +229,7 @@ public class PatchSetSection extends AbstractGerritSection {
 
 	@Override
 	public void initialize(AbstractTaskEditorPage taskEditorPage) {
+		expanders = new ArrayList<SectionExpander>();
 		super.initialize(taskEditorPage);
 	}
 
@@ -337,15 +373,19 @@ public class PatchSetSection extends AbstractGerritSection {
 
 		if (subSection.isExpanded()) {
 			createSubSectionContents(changeDetail, patchSetDetail, publishDetail, subSection);
+			expanders.add(null);
 		}
-		subSection.addExpansionListener(new ExpansionAdapter() {
-			@Override
-			public void expansionStateChanged(ExpansionEvent e) {
-				if (subSection.getClient() == null) {
-					createSubSectionContents(changeDetail, patchSetDetail, publishDetail, subSection);
-				}
-			}
-		});
+		SectionExpander createExpander = new SectionExpander(subSection, changeDetail, patchSetDetail, publishDetail);
+		subSection.addExpansionListener(createExpander);
+		expanders.add(createExpander);
+	}
+
+	public void expandPatchSet(int patchSetNumber) {
+		int index = patchSetNumber - 1;
+		SectionExpander section = expanders.get(index);
+		if (section != null) {
+			section.focusOn();
+		}
 	}
 
 	private int getNumComments(PatchSetDetail patchSetDetail) {
