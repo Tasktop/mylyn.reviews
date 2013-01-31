@@ -14,16 +14,23 @@ package org.eclipse.mylyn.internal.gerrit.ui;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.mylyn.commons.workbench.EditorHandle;
 import org.eclipse.mylyn.commons.workbench.browser.AbstractUrlHandler;
 import org.eclipse.mylyn.internal.gerrit.core.GerritConnector;
+import org.eclipse.mylyn.internal.gerrit.ui.editor.GerritTaskEditorPage;
+import org.eclipse.mylyn.internal.gerrit.ui.editor.PatchSetSection;
 import org.eclipse.mylyn.tasks.core.TaskRepository;
 import org.eclipse.mylyn.tasks.ui.TasksUi;
 import org.eclipse.mylyn.tasks.ui.TasksUiUtil;
+import org.eclipse.mylyn.tasks.ui.editors.TaskEditor;
 import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.forms.editor.IFormPage;
 
 /**
  * @author Steffen Pingel
+ * @author Miles Parker
  */
 public class GerritUrlHandler extends AbstractUrlHandler {
 
@@ -39,7 +46,29 @@ public class GerritUrlHandler extends AbstractUrlHandler {
 		for (TaskRepository repository : TasksUi.getRepositoryManager().getRepositories(GerritConnector.CONNECTOR_KIND)) {
 			String taskId = getTaskId(repository, url);
 			if (taskId != null) {
-				return TasksUiUtil.openTaskWithResult(repository, taskId);
+				EditorHandle editorHandle = TasksUiUtil.openTaskWithResult(repository, taskId);
+				String taskUrl = TasksUi.getRepositoryConnector(GerritConnector.CONNECTOR_KIND).getTaskUrl(
+						repository.getUrl(), taskId);
+				String patchSetFragment = StringUtils.remove(url, taskUrl);
+				patchSetFragment = StringUtils.removeEnd(patchSetFragment, "/");
+				if (!StringUtils.isEmpty(patchSetFragment)) {
+					try {
+						Integer patchSetNumber = Integer.valueOf(patchSetFragment);
+						IWorkbenchPart part = editorHandle.getPart();
+						if (part instanceof TaskEditor) {
+							TaskEditor taskEditor = (TaskEditor) part;
+							IFormPage activePage = taskEditor.setActivePage(GerritTaskEditorPage.class.getName());
+							if (activePage instanceof GerritTaskEditorPage) {
+								GerritTaskEditorPage gerritPage = (GerritTaskEditorPage) activePage;
+								PatchSetSection section = (PatchSetSection) gerritPage.getPart(PatchSetSection.class.getName());
+								section.focusOnPatchSet(patchSetNumber);
+							}
+						}
+					} catch (NumberFormatException e) {
+						//ignore, the patch fragment simply can't be parsed
+					}
+				}
+				return editorHandle;
 			}
 		}
 		return null;
@@ -56,4 +85,8 @@ public class GerritUrlHandler extends AbstractUrlHandler {
 		return null;
 	}
 
+	@Override
+	public int getPriority() {
+		return 200;
+	}
 }
